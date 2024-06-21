@@ -1,0 +1,2787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{94D2BE9C-BF7A-4196-9A43-26532F6B5F80}</ProjectGuid>
+    <TargetFrameworkProfile />
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GovPilot</RootNamespace>
+    <AssemblyName>GovPilot</AssemblyName>
+    <NoWarn>1591</NoWarn>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <RANOREX_BIN_PATH Condition=" '$(RANOREX_BIN_PATH)' == '' ">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Ranorex\Studio', 'InstallDir', null, RegistryView.Registry64, RegistryView.Registry32))\Bin</RANOREX_BIN_PATH>
+    <RanorexTargetsPath>$(RANOREX_BIN_PATH)\Ranorex.MSBuild.Targets</RanorexTargetsPath>
+    <projectdefaultrepository>3cb08cea-c66f-40ad-bef8-67dedaf71117</projectdefaultrepository>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>True</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591,0108</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591,0108</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ranorex.Bootstrapper, Version=11.3.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RanorexLibraries\Ranorex.Bootstrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Core, Version=11.3.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RanorexLibraries\Ranorex.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Core.Resolver, Version=11.3.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RanorexLibraries\Ranorex.Core.Resolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Cef">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.ChromeWeb">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Delphi">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.FirefoxWeb">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Flex">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Java">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Mobile">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Msaa">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Office">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Qt">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.RawText">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Sap">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Uia">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Web, Version=11.3.0.0, Culture=neutral, PublicKeyToken=b798506b574ebc9a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RanorexLibraries\Ranorex.Plugin.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.WebDriver">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Win32">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.WinForms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.WinForms.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Wpf">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.Plugin.Wpf.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ranorex.ReportToPDF, Version=1.0.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ranorex.ReportToPDF.1.0.17\lib\net40\Ranorex.ReportToPDF.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GovPilotRecordings\CommonFunctions\CloseBrowser.cs">
+      <DependentUpon>CloseBrowser.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+      <id>c4bcddf7-21dc-4a2a-af28-3e6b2d314672</id>
+      <BoundTo>99582f4b-d153-4376-b097-95e72f61deb4</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\CommonFunctions\CloseBrowser.UserCode.cs">
+      <DependentUpon>CloseBrowser.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+      <id>8314332e-1905-4c8e-8f08-cc993f93722e</id>
+      <BoundTo>99582f4b-d153-4376-b097-95e72f61deb4</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\CommonFunctions\GoToHomeScreen.cs">
+      <DependentUpon>GoToHomeScreen.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+      <id>3ed3ff0c-3378-4266-b898-377ed3c0777b</id>
+      <BoundTo>4896e1cc-a9d1-4273-be48-250e599e975a</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\CommonFunctions\GoToHomeScreen.UserCode.cs">
+      <DependentUpon>GoToHomeScreen.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+      <id>fdd1c50f-d13d-403b-abcc-331ad0eb1b47</id>
+      <BoundTo>4896e1cc-a9d1-4273-be48-250e599e975a</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\CommonFunctions\Login.cs">
+      <DependentUpon>Login.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+      <id>dafb7e30-d357-41a0-8269-4a182f5c421d</id>
+      <BoundTo>48f4df5c-628b-46bb-a3be-59280f438b22</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\CommonFunctions\Login.UserCode.cs">
+      <DependentUpon>Login.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+      <id>cfbde8a1-a3c9-4002-a4f4-a1b0743f4965</id>
+      <BoundTo>48f4df5c-628b-46bb-a3be-59280f438b22</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\CommonFunctions\OpenBrowser.cs">
+      <DependentUpon>OpenBrowser.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+      <id>1699de5b-e83b-4c5d-9f3f-cd128bac8ece</id>
+      <BoundTo>205e8d2c-aae7-4547-a7af-06f53833527b</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\CommonFunctions\OpenBrowser.UserCode.cs">
+      <DependentUpon>OpenBrowser.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+      <id>3e0b8cf7-848a-4d9d-b434-d50340f67117</id>
+      <BoundTo>205e8d2c-aae7-4547-a7af-06f53833527b</BoundTo>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddAndValidateAddedFilters.cs">
+      <id>b9bddbb1-6ea3-4233-a94a-ec859bc1d419</id>
+      <BoundTo>b9f82dd1-21d7-4af9-8218-fa8f24ae354e</BoundTo>
+      <DependentUpon>AddAndValidateAddedFilters.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddAndValidateAddedFilters.UserCode.cs">
+      <id>e6456380-c5b7-465c-9139-a3adefb299ca</id>
+      <BoundTo>b9f82dd1-21d7-4af9-8218-fa8f24ae354e</BoundTo>
+      <DependentUpon>AddAndValidateAddedFilters.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddFieldsToView.cs">
+      <id>395c43e8-524a-4d34-9e65-e6fc07033790</id>
+      <BoundTo>0d001023-c9e8-4587-aa5e-b44f5852a322</BoundTo>
+      <DependentUpon>AddFieldsToView.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddFieldsToView.UserCode.cs">
+      <id>6d5aa0b2-b974-4553-8a23-da8a95e9ad17</id>
+      <BoundTo>0d001023-c9e8-4587-aa5e-b44f5852a322</BoundTo>
+      <DependentUpon>AddFieldsToView.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddFiltersAndCheck.cs">
+      <id>c213172f-9b11-4989-83f3-7bc0cdfd6b0c</id>
+      <BoundTo>a8476dde-ee2b-445d-af66-3339ec7093c2</BoundTo>
+      <DependentUpon>AddFiltersAndCheck.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddFiltersAndCheck.UserCode.cs">
+      <id>a0e8200f-5e27-48ed-a4ec-010e30661c34</id>
+      <BoundTo>a8476dde-ee2b-445d-af66-3339ec7093c2</BoundTo>
+      <DependentUpon>AddFiltersAndCheck.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AllView.cs">
+      <id>a88df751-5d85-4a35-b8e8-9820d550632c</id>
+      <BoundTo>b89791df-0c4c-4f87-be87-26feacfc0102</BoundTo>
+      <DependentUpon>AllView.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\AllView.UserCode.cs">
+      <id>8dbf62ed-c48b-4700-8588-2b68dc1d999a</id>
+      <BoundTo>b89791df-0c4c-4f87-be87-26feacfc0102</BoundTo>
+      <DependentUpon>AllView.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheFirstSeqNum.cs">
+      <id>6d1a7bb3-8197-474c-8016-3cb35fe5dfa1</id>
+      <BoundTo>d8a298a1-11b4-4717-be9f-f90089182d05</BoundTo>
+      <DependentUpon>CacheTheFirstSeqNum.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheFirstSeqNum.UserCode.cs">
+      <id>ee812df4-c944-4f4e-ab89-032908868720</id>
+      <BoundTo>d8a298a1-11b4-4717-be9f-f90089182d05</BoundTo>
+      <DependentUpon>CacheTheFirstSeqNum.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheLotAndBlock.cs">
+      <id>e68e0900-2d9f-45da-99fa-419d77143b1c</id>
+      <BoundTo>b8c31c5b-f1ef-4a64-b21c-fd47fb78ac98</BoundTo>
+      <DependentUpon>CacheTheLotAndBlock.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheLotAndBlock.UserCode.cs">
+      <id>569e8f36-5d23-4501-aef4-bfeb74f0d083</id>
+      <BoundTo>b8c31c5b-f1ef-4a64-b21c-fd47fb78ac98</BoundTo>
+      <DependentUpon>CacheTheLotAndBlock.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheSeqNumAndAddress.cs">
+      <id>41f14051-e193-4c21-8c75-67d5d1e7c7d8</id>
+      <BoundTo>1ab02beb-e257-4825-9ea6-b38c36195b74</BoundTo>
+      <DependentUpon>CacheTheSeqNumAndAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheSeqNumAndAddress.UserCode.cs">
+      <id>cf3b5425-c3c0-4ab0-974c-9348ff7800b7</id>
+      <BoundTo>1ab02beb-e257-4825-9ea6-b38c36195b74</BoundTo>
+      <DependentUpon>CacheTheSeqNumAndAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheSerialNumber.cs">
+      <id>a70c93b5-5c8a-4b86-ac8f-7fe4c5ccbf17</id>
+      <BoundTo>2c4788a5-24ef-48ee-b037-7a4b9919e0cb</BoundTo>
+      <DependentUpon>CacheTheSerialNumber.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheSerialNumber.UserCode.cs">
+      <id>6684d3b9-9a52-438c-9cf6-f1f62ad19f09</id>
+      <BoundTo>2c4788a5-24ef-48ee-b037-7a4b9919e0cb</BoundTo>
+      <DependentUpon>CacheTheSerialNumber.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CancelSendEmailAndValidate.cs">
+      <id>f2acd65f-dd98-4567-9634-3b4528ca9114</id>
+      <BoundTo>c79b425d-372e-4da1-a203-de8a2ef4162d</BoundTo>
+      <DependentUpon>CancelSendEmailAndValidate.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CancelSendEmailAndValidate.UserCode.cs">
+      <id>05127051-5448-415a-a696-ffd78161e9e8</id>
+      <BoundTo>c79b425d-372e-4da1-a203-de8a2ef4162d</BoundTo>
+      <DependentUpon>CancelSendEmailAndValidate.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ChangeStatusForEmailSending.cs">
+      <id>19c1575c-0609-49a2-af88-6180fbdd3d14</id>
+      <DependentUpon>ChangeStatusForEmailSending.rxrec</DependentUpon>
+      <BoundTo>f8c80f18-60e1-4e60-b9e1-c2366feb234f</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ChangeStatusForEmailSending.UserCode.cs">
+      <id>1ea07b23-fd80-4b84-87ae-b9de4df49fc9</id>
+      <DependentUpon>ChangeStatusForEmailSending.rxrec</DependentUpon>
+      <BoundTo>f8c80f18-60e1-4e60-b9e1-c2366feb234f</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CheckLogsCorrespondence.cs">
+      <id>3deb16f6-e2a8-421f-8e5f-b9b9e11b92ab</id>
+      <BoundTo>81e5e626-153e-49da-8c38-85440bc0611a</BoundTo>
+      <DependentUpon>CheckLogsCorrespondence.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CheckLogsCorrespondence.UserCode.cs">
+      <id>0d8ab6f6-54f6-4cfb-953a-04b4f8c1f53f</id>
+      <BoundTo>81e5e626-153e-49da-8c38-85440bc0611a</BoundTo>
+      <DependentUpon>CheckLogsCorrespondence.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloneToDifferentAddress.cs">
+      <id>942f253e-8d6b-40e1-98ce-35562f89af58</id>
+      <BoundTo>66cd6b6a-3331-4340-ae84-6787e5c9412d</BoundTo>
+      <DependentUpon>CloneToDifferentAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloneToDifferentAddress.UserCode.cs">
+      <id>c8961e96-e661-48ea-99bd-ae4f48ea0b5a</id>
+      <BoundTo>66cd6b6a-3331-4340-ae84-6787e5c9412d</BoundTo>
+      <DependentUpon>CloneToDifferentAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseDataViewer.cs">
+      <id>2e5e8223-d898-4e88-8177-ed0d0516416c</id>
+      <BoundTo>3957e13a-7ae6-411b-81f1-c926b2b1a4ac</BoundTo>
+      <DependentUpon>CloseDataViewer.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseDataViewer.UserCode.cs">
+      <id>b24d0b5a-8fd6-4e9a-bd70-5e6a58dfcadd</id>
+      <BoundTo>3957e13a-7ae6-411b-81f1-c926b2b1a4ac</BoundTo>
+      <DependentUpon>CloseDataViewer.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseDialog.cs">
+      <id>cb3cff96-6b3a-4dd0-b296-39e9616f1700</id>
+      <BoundTo>07f40f34-cc75-4d4f-8f9c-46da05aa887b</BoundTo>
+      <DependentUpon>CloseDialog.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseDialog.UserCode.cs">
+      <id>1f938680-2d9a-4f5f-a5a2-5f1fe43b2aff</id>
+      <BoundTo>07f40f34-cc75-4d4f-8f9c-46da05aa887b</BoundTo>
+      <DependentUpon>CloseDialog.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseFormAndDataViewer.cs">
+      <id>3697bf93-51e5-4d83-9842-f6a8c3c5e0d9</id>
+      <BoundTo>73aa5a68-d6c6-4f0f-8d7a-ba93e7ec7a2d</BoundTo>
+      <DependentUpon>CloseFormAndDataViewer.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseFormAndDataViewer.UserCode.cs">
+      <id>d30191ac-2491-4cc7-8de1-a9ed4eb014bd</id>
+      <BoundTo>73aa5a68-d6c6-4f0f-8d7a-ba93e7ec7a2d</BoundTo>
+      <DependentUpon>CloseFormAndDataViewer.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ClosePreviousRecord.cs">
+      <id>a70cddcb-2748-4ff2-8f87-fa07b2d98fe2</id>
+      <BoundTo>8c54c1a9-960d-4a7a-bb60-9731a1bee211</BoundTo>
+      <DependentUpon>ClosePreviousRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ClosePreviousRecord.UserCode.cs">
+      <id>d1dceb19-d3a1-4a58-8b0e-89442c9fbd13</id>
+      <BoundTo>8c54c1a9-960d-4a7a-bb60-9731a1bee211</BoundTo>
+      <DependentUpon>ClosePreviousRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseRecord.cs">
+      <id>b8388b57-a554-449e-b03a-4206ca8f0242</id>
+      <BoundTo>0cc1a506-38cc-458f-b216-d85da7850d09</BoundTo>
+      <DependentUpon>CloseRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseRecord.UserCode.cs">
+      <id>649623cc-ff18-41b9-815e-90e32196b03a</id>
+      <BoundTo>0cc1a506-38cc-458f-b216-d85da7850d09</BoundTo>
+      <DependentUpon>CloseRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseRecycleBin.cs">
+      <id>59d569c0-ee06-47a3-a22a-fe281fb9080e</id>
+      <BoundTo>d295b7ed-d159-45bb-8afc-1fe8190c7487</BoundTo>
+      <DependentUpon>CloseRecycleBin.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseRecycleBin.UserCode.cs">
+      <id>95f2cc13-8001-4905-b374-6526f17aff87</id>
+      <BoundTo>d295b7ed-d159-45bb-8afc-1fe8190c7487</BoundTo>
+      <DependentUpon>CloseRecycleBin.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseScreens.cs">
+      <id>35374c3b-e447-4c75-b456-11ab7387c944</id>
+      <BoundTo>73c0db91-77d0-4da5-b053-91e5522310ac</BoundTo>
+      <DependentUpon>CloseScreens.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseScreens.UserCode.cs">
+      <id>214df7ab-2595-46ac-a208-bfcf0fd17c3c</id>
+      <BoundTo>73c0db91-77d0-4da5-b053-91e5522310ac</BoundTo>
+      <DependentUpon>CloseScreens.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewAndCancel.cs">
+      <id>75d21d2d-c970-4a8b-8440-868aa48e3a73</id>
+      <BoundTo>66b16b16-4bba-4a85-b87e-b056092ef984</BoundTo>
+      <DependentUpon>CreateNewAndCancel.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewAndCancel.UserCode.cs">
+      <id>fcc77dc3-8945-4fb7-95f0-04005a9c8b76</id>
+      <BoundTo>66b16b16-4bba-4a85-b87e-b056092ef984</BoundTo>
+      <DependentUpon>CreateNewAndCancel.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewAndCLose.cs">
+      <id>40f093ea-04a8-4006-ba21-8a2ad9de4c4a</id>
+      <BoundTo>60776ef8-4b68-438e-95e9-d9b4ec786e7d</BoundTo>
+      <DependentUpon>CreateNewAndCLose.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewAndCLose.UserCode.cs">
+      <id>bdb26779-7942-4c07-850a-1b61c0ec81fe</id>
+      <BoundTo>60776ef8-4b68-438e-95e9-d9b4ec786e7d</BoundTo>
+      <DependentUpon>CreateNewAndCLose.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewRecord.cs">
+      <id>54de478c-bcaf-4f6e-9980-b52cc90ae5d6</id>
+      <BoundTo>0fa49e3d-7217-40fe-9f0a-12792d15f2bb</BoundTo>
+      <DependentUpon>CreateNewRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewRecord.UserCode.cs">
+      <id>fbe4c1b8-1095-4bf5-a068-ff7356f2b3f0</id>
+      <BoundTo>0fa49e3d-7217-40fe-9f0a-12792d15f2bb</BoundTo>
+      <DependentUpon>CreateNewRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewSaveClose.cs">
+      <id>90a12be2-f5ae-40ec-a7e3-b080d0826e89</id>
+      <BoundTo>647e7912-56c8-4abf-b900-321a23c71636</BoundTo>
+      <DependentUpon>CreateNewSaveClose.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewSaveClose.UserCode.cs">
+      <id>cf3a1ecf-7ef3-4521-bdbc-617212ebe8e6</id>
+      <BoundTo>647e7912-56c8-4abf-b900-321a23c71636</BoundTo>
+      <DependentUpon>CreateNewSaveClose.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\DeselectFewAndAddFewNewFields.cs">
+      <id>6504e39a-b58d-445e-babb-8f6f291d8a96</id>
+      <BoundTo>5a7392d7-d896-4799-9fb0-2a6bc309f4fe</BoundTo>
+      <DependentUpon>DeselectFewAndAddFewNewFields.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\DeselectFewAndAddFewNewFields.UserCode.cs">
+      <id>2dec48f4-cedc-4fe0-b6bc-938045361e24</id>
+      <BoundTo>5a7392d7-d896-4799-9fb0-2a6bc309f4fe</BoundTo>
+      <DependentUpon>DeselectFewAndAddFewNewFields.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\EditForm.cs">
+      <id>e5954dac-1946-4121-9f35-381913c1b4d7</id>
+      <BoundTo>6e00a833-0492-485e-b98e-89517ecd96f9</BoundTo>
+      <DependentUpon>EditForm.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\EditForm.UserCode.cs">
+      <id>4a903e15-c9d4-49eb-937e-ede10b667b02</id>
+      <BoundTo>6e00a833-0492-485e-b98e-89517ecd96f9</BoundTo>
+      <DependentUpon>EditForm.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\EditFormWithoutEdit.cs">
+      <id>c2e49314-b6a7-4332-ba7a-232fc9feae5c</id>
+      <BoundTo>3c50ddbe-eab9-4bbc-b498-8d9ad440aa62</BoundTo>
+      <DependentUpon>EditFormWithoutEdit.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\EditFormWithoutEdit.UserCode.cs">
+      <id>969b4547-76af-402f-a7d3-29e7b4ef2bad</id>
+      <BoundTo>3c50ddbe-eab9-4bbc-b498-8d9ad440aa62</BoundTo>
+      <DependentUpon>EditFormWithoutEdit.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\EmailGeneration.cs">
+      <id>8d79dfef-4b9e-4571-b5a1-d455383239a2</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\EnterEmailInTheRecord.cs">
+      <id>53454bb0-7293-461d-bae4-08583d7782d8</id>
+      <BoundTo>340d4dab-d6fb-4c2c-84c7-b866a6f26037</BoundTo>
+      <DependentUpon>EnterEmailInTheRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\EnterEmailInTheRecord.UserCode.cs">
+      <id>4e3c94d2-f19e-419e-9e65-71ab06b0f028</id>
+      <BoundTo>340d4dab-d6fb-4c2c-84c7-b866a6f26037</BoundTo>
+      <DependentUpon>EnterEmailInTheRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchLastEnteredRecordID.cs">
+      <id>c945871a-f15b-4bb2-ad02-fe8e7956d10e</id>
+      <BoundTo>e1b1ef68-fe8e-4793-9576-c127f184b63d</BoundTo>
+      <DependentUpon>FetchLastEnteredRecordID.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchLastEnteredRecordID.UserCode.cs">
+      <id>14a1988d-cb0b-478a-bcd9-bc9481852d09</id>
+      <BoundTo>e1b1ef68-fe8e-4793-9576-c127f184b63d</BoundTo>
+      <DependentUpon>FetchLastEnteredRecordID.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchLatestRecordIDFromGrid.cs">
+      <id>6cbd07ff-1dfd-4e70-9ec4-280df701bfff</id>
+      <BoundTo>6dde3776-cc91-4861-8a43-541e06c57db7</BoundTo>
+      <DependentUpon>FetchLatestRecordIDFromGrid.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchLatestRecordIDFromGrid.UserCode.cs">
+      <id>f6de739a-ccc9-435a-af7a-b19ba98dfaf1</id>
+      <BoundTo>6dde3776-cc91-4861-8a43-541e06c57db7</BoundTo>
+      <DependentUpon>FetchLatestRecordIDFromGrid.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchTheLatestCreatedIDAndValidate.cs">
+      <id>7d895485-a2fb-4268-bc9a-1fc226afe232</id>
+      <DependentUpon>FetchTheLatestCreatedIDAndValidate.rxrec</DependentUpon>
+      <BoundTo>194b1f25-44be-4ed3-a9cc-7100c230bcff</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchTheLatestCreatedIDAndValidate.UserCode.cs">
+      <id>c69e6c90-88e3-45f3-a94b-4dc6ba93283e</id>
+      <DependentUpon>FetchTheLatestCreatedIDAndValidate.rxrec</DependentUpon>
+      <BoundTo>194b1f25-44be-4ed3-a9cc-7100c230bcff</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillEmailDetails.cs">
+      <id>940e7827-38e8-4c65-8c01-8bdcd65f5fee</id>
+      <BoundTo>d9d9a2d8-9b78-472c-8e28-75832dab272a</BoundTo>
+      <DependentUpon>FillEmailDetails.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FIllEmailDetails.UserCode.cs">
+      <id>57fa7f27-7d72-436d-ba8a-27a3b1c18f82</id>
+      <BoundTo>d9d9a2d8-9b78-472c-8e28-75832dab272a</BoundTo>
+      <DependentUpon>FillEmailDetails.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillFormDetails.cs">
+      <id>eac12494-df7e-402d-9c51-67e19cd1003f</id>
+      <DependentUpon>FillFormDetails.rxrec</DependentUpon>
+      <BoundTo>dc804eb2-877a-4ca5-b63b-d1d02633af91</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillFormDetails.UserCode.cs">
+      <id>4c34e6ca-170a-4f99-b2d6-f59b78f7ed81</id>
+      <DependentUpon>FillFormDetails.rxrec</DependentUpon>
+      <BoundTo>dc804eb2-877a-4ca5-b63b-d1d02633af91</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillFOrmDetailsWithEdit.cs">
+      <id>5afb4c4f-544a-4afa-a252-fd551dd9cfc6</id>
+      <DependentUpon>FillFOrmDetailsWithEdit.rxrec</DependentUpon>
+      <BoundTo>048fd435-3922-4618-846d-cbc03022b53c</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillFOrmDetailsWithEdit.UserCode.cs">
+      <id>d247e005-850b-4372-b57b-2f16369b273c</id>
+      <DependentUpon>FillFOrmDetailsWithEdit.rxrec</DependentUpon>
+      <BoundTo>048fd435-3922-4618-846d-cbc03022b53c</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\GoToAllView.cs">
+      <id>66203dc0-8fc8-442f-b4ff-a2036e6d509f</id>
+      <BoundTo>ad59ecb8-3480-4912-8021-6cd8e1bd54fc</BoundTo>
+      <DependentUpon>GoToAllView.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\GoToAllView.UserCode.cs">
+      <id>c7879938-568f-4d50-8d46-0174c2886eee</id>
+      <BoundTo>ad59ecb8-3480-4912-8021-6cd8e1bd54fc</BoundTo>
+      <DependentUpon>GoToAllView.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchAndDeleteARecord.cs">
+      <id>0d8f48d6-945c-4f0d-b6ae-7a36af109d6b</id>
+      <BoundTo>1c7f5476-285a-4506-944c-79b74cd3f8c2</BoundTo>
+      <DependentUpon>LaunchAndDeleteARecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchAndDeleteARecord.UserCode.cs">
+      <id>6c2799cd-789f-48d8-86e2-f9f9004cfb59</id>
+      <BoundTo>1c7f5476-285a-4506-944c-79b74cd3f8c2</BoundTo>
+      <DependentUpon>LaunchAndDeleteARecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchAndViewTheRecord.cs">
+      <id>09645ece-e696-4afd-96d6-37465152c14a</id>
+      <BoundTo>1167c8e1-9816-4878-83ee-676bfdacb855</BoundTo>
+      <DependentUpon>LaunchAndViewTheRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchAndViewTheRecord.UserCode.cs">
+      <id>4ea5e135-7933-4997-a296-9238486406d9</id>
+      <BoundTo>1167c8e1-9816-4878-83ee-676bfdacb855</BoundTo>
+      <DependentUpon>LaunchAndViewTheRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchApp.cs">
+      <id>f7a2e341-2463-48aa-812f-da3bd4c5f7b6</id>
+      <BoundTo>fd481738-52b8-4356-a87e-1e2c79532796</BoundTo>
+      <DependentUpon>LaunchApp.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchApp.UserCode.cs">
+      <id>6627dcf8-9046-45ec-9175-5f0c4c1d4dcd</id>
+      <BoundTo>fd481738-52b8-4356-a87e-1e2c79532796</BoundTo>
+      <DependentUpon>LaunchApp.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchEmailAndValidate.cs">
+      <id>7629634b-ca4d-410a-84cc-2cb0b39b812b</id>
+      <BoundTo>be516271-2184-4908-a412-d6c5d5ed3076</BoundTo>
+      <DependentUpon>LaunchEmailAndValidate.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchEmailAndValidate.UserCode.cs">
+      <id>f9137e41-42af-4855-90e4-3cf644c12c2f</id>
+      <BoundTo>be516271-2184-4908-a412-d6c5d5ed3076</BoundTo>
+      <DependentUpon>LaunchEmailAndValidate.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchModule.cs">
+      <id>800eb6b3-9092-41b2-89db-d82e406f3649</id>
+      <BoundTo>3d3076d4-a9d9-44f8-8cf6-b0d2f0b8ef47</BoundTo>
+      <DependentUpon>LaunchModule.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchModule.UserCode.cs">
+      <id>18472850-e236-481a-8eda-785c61840822</id>
+      <BoundTo>3d3076d4-a9d9-44f8-8cf6-b0d2f0b8ef47</BoundTo>
+      <DependentUpon>LaunchModule.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchNavigateClonningWizard.cs">
+      <id>3cd12d23-e092-4e47-aa3f-b1a6da502c19</id>
+      <BoundTo>a33ad29a-84c8-4338-be9b-1e12bcbec6fb</BoundTo>
+      <DependentUpon>LaunchNavigateClonningWizard.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchNavigateClonningWizard.UserCode.cs">
+      <id>93a15730-92f4-43c1-bfd7-5a2d1d34cea6</id>
+      <BoundTo>a33ad29a-84c8-4338-be9b-1e12bcbec6fb</BoundTo>
+      <DependentUpon>LaunchNavigateClonningWizard.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchPrintMenu.cs">
+      <id>717f09b4-0297-46c8-aa70-c56278127565</id>
+      <DependentUpon>LaunchPrintMenu.rxrec</DependentUpon>
+      <BoundTo>ebbc17ca-6705-4dea-846b-2ad626cdf615</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchPrintMenu.UserCode.cs">
+      <id>24832ea0-c06f-4f09-a3eb-ca9d3482aacb</id>
+      <DependentUpon>LaunchPrintMenu.rxrec</DependentUpon>
+      <BoundTo>ebbc17ca-6705-4dea-846b-2ad626cdf615</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchPropertyAndValidate.cs">
+      <id>54c84246-3223-4558-97d9-a98f48f9b48a</id>
+      <DependentUpon>LaunchPropertyAndValidate.rxrec</DependentUpon>
+      <BoundTo>7a6b52b5-0300-497c-bf5e-69517e7299d7</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchPropertyAndValidate.UserCode.cs">
+      <id>6675965b-2565-4905-85c0-2ef1bdd09b3d</id>
+      <DependentUpon>LaunchPropertyAndValidate.rxrec</DependentUpon>
+      <BoundTo>7a6b52b5-0300-497c-bf5e-69517e7299d7</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchRecycleBinAndVerifyDelete.cs">
+      <id>059fc1e9-4ea1-4208-862e-afa8188c45b7</id>
+      <BoundTo>5999e5b9-b9ab-4899-b3be-52f7a414f0a0</BoundTo>
+      <DependentUpon>LaunchRecycleBinAndVerifyDelete.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchRecycleBinAndVerifyDelete.UserCode.cs">
+      <id>1c65e27a-d69e-418d-b74f-7e05bbc40560</id>
+      <BoundTo>5999e5b9-b9ab-4899-b3be-52f7a414f0a0</BoundTo>
+      <DependentUpon>LaunchRecycleBinAndVerifyDelete.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchTheRecordAndCloneIt.cs">
+      <id>a02858de-c583-487f-8b83-71eaa9677f69</id>
+      <BoundTo>56a0a35b-c242-4024-b038-eaa860428964</BoundTo>
+      <DependentUpon>LaunchTheRecordAndCloneIt.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchTheRecordAndCloneIt.UserCode.cs">
+      <id>afa18f06-79e6-4aa7-8b30-5c6e4a80e788</id>
+      <BoundTo>56a0a35b-c242-4024-b038-eaa860428964</BoundTo>
+      <DependentUpon>LaunchTheRecordAndCloneIt.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\NavigateToDataViewer.cs">
+      <id>ac154248-35a9-436f-90df-609efebfe55f</id>
+      <BoundTo>8ebbf602-19cf-413f-8d65-93d8fbbe5ce0</BoundTo>
+      <DependentUpon>NavigateToDataViewer.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\NavigateToDataViewer.UserCode.cs">
+      <id>13281c24-5651-40c1-a0f1-5c287832f93e</id>
+      <BoundTo>8ebbf602-19cf-413f-8d65-93d8fbbe5ce0</BoundTo>
+      <DependentUpon>NavigateToDataViewer.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenNewFormAndVerifyDateEnteredAsSysDate.cs">
+      <id>5275392c-cbaa-46f4-9611-98dbd513a921</id>
+      <BoundTo>6448eb0c-ead3-40b3-8297-c975edb92d78</BoundTo>
+      <DependentUpon>OpenNewFormAndVerifyDateEnteredAsSysDate.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenNewFormAndVerifyDateEnteredAsSysDate.UserCode.cs">
+      <id>fd5e25cd-3f41-4be3-8229-90ef7a6259eb</id>
+      <BoundTo>6448eb0c-ead3-40b3-8297-c975edb92d78</BoundTo>
+      <DependentUpon>OpenNewFormAndVerifyDateEnteredAsSysDate.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenRecordAndDelete.cs">
+      <id>0155f996-4b5c-4527-8037-2ad9798d1671</id>
+      <BoundTo>42fa1079-fdf2-4d79-a33f-e70f1f71da11</BoundTo>
+      <DependentUpon>OpenRecordAndDelete.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenRecordAndDelete.UserCode.cs">
+      <id>cea9a0b7-c50f-43e2-92d1-1e26be5ccd75</id>
+      <BoundTo>42fa1079-fdf2-4d79-a33f-e70f1f71da11</BoundTo>
+      <DependentUpon>OpenRecordAndDelete.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenRecordToEdit.cs">
+      <id>a85fc12e-8f98-4ab2-a521-e4753311f277</id>
+      <BoundTo>e3011fc9-cff0-412b-bef1-ff0b12b87696</BoundTo>
+      <DependentUpon>OpenRecordToEdit.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenRecordToEdit.UserCode.cs">
+      <id>c21cfbfb-e46e-4111-b0eb-6c918cd152ad</id>
+      <BoundTo>e3011fc9-cff0-412b-bef1-ff0b12b87696</BoundTo>
+      <DependentUpon>OpenRecordToEdit.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\PopulateDataInNewRecord.cs">
+      <id>36878763-2236-4999-843f-e54f712fe35d</id>
+      <BoundTo>1dd5876f-8205-48ed-8305-1fa48595b9f4</BoundTo>
+      <DependentUpon>PopulateDataInNewRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\PopulateDataInNewRecord.UserCode.cs">
+      <id>4026bfa6-6151-44a7-9b9f-e198ca7edccc</id>
+      <BoundTo>1dd5876f-8205-48ed-8305-1fa48595b9f4</BoundTo>
+      <DependentUpon>PopulateDataInNewRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\PopulateNewRecordSaveAndClose.cs">
+      <id>cc20b6b5-736c-453a-bcad-44d845a43d4b</id>
+      <BoundTo>0347387a-55b3-453a-ab5c-0a1fddfdca53</BoundTo>
+      <DependentUpon>PopulateNewRecordSaveAndClose.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\PopulateNewRecordSaveAndClose.UserCode.cs">
+      <id>0bc2cf68-15d3-41e5-bb17-ee25805af9a8</id>
+      <BoundTo>0347387a-55b3-453a-ab5c-0a1fddfdca53</BoundTo>
+      <DependentUpon>PopulateNewRecordSaveAndClose.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\RemoveFilters.cs">
+      <id>8e0805e1-f1d6-42f7-a9e7-72dd2aff1120</id>
+      <BoundTo>e87043b7-531c-46e2-a2b6-3aa61ac6c335</BoundTo>
+      <DependentUpon>RemoveFilters.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\RemoveFilters.UserCode.cs">
+      <id>b0a166bc-d5d3-4468-ac7d-44cc1ef2a367</id>
+      <BoundTo>e87043b7-531c-46e2-a2b6-3aa61ac6c335</BoundTo>
+      <DependentUpon>RemoveFilters.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\RestoreDeletedRecord.cs">
+      <id>44f06356-737c-4e40-a8fa-cfc0bce2008a</id>
+      <BoundTo>7dc3e38f-60f0-4862-a3cf-ae7a90ed0f5c</BoundTo>
+      <DependentUpon>RestoreDeletedRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\RestoreDeletedRecord.UserCode.cs">
+      <id>af3fd597-dc8f-4ad4-b10c-beec5cbccc8d</id>
+      <BoundTo>7dc3e38f-60f0-4862-a3cf-ae7a90ed0f5c</BoundTo>
+      <DependentUpon>RestoreDeletedRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SelectModuleAndViewFormCancel.cs">
+      <id>46ea396f-63c9-48c1-83d5-1516081d0cc1</id>
+      <BoundTo>69819407-1844-4b41-92a9-b22356bd6fe1</BoundTo>
+      <DependentUpon>SelectModuleAndViewFormCancel.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SelectModuleAndViewFormCancel.UserCode.cs">
+      <id>4774fae7-875e-4f04-9695-36c639ebe4c3</id>
+      <BoundTo>69819407-1844-4b41-92a9-b22356bd6fe1</BoundTo>
+      <DependentUpon>SelectModuleAndViewFormCancel.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SelectModuleAndViewFormClose.cs">
+      <id>fc4afaf7-a6a0-4373-8e63-c9bb1961c1a4</id>
+      <BoundTo>ea847d48-25fe-49d4-af40-90b505fef754</BoundTo>
+      <DependentUpon>SelectModuleAndViewFormClose.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SelectModuleAndViewFormClose.UserCode.cs">
+      <id>6bef4b10-dba3-4dbd-a666-83b923b351c4</id>
+      <BoundTo>ea847d48-25fe-49d4-af40-90b505fef754</BoundTo>
+      <DependentUpon>SelectModuleAndViewFormClose.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SendEmailAndValidate.cs">
+      <id>ef7900dc-24dd-4145-94ee-9545d32c5d85</id>
+      <BoundTo>310330a0-8d39-40ab-b31b-85f994bc043b</BoundTo>
+      <DependentUpon>SendEmailAndValidate.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SendEmailAndValidate.UserCode.cs">
+      <id>475992cb-4f53-45a1-b72a-a5e507e21bfb</id>
+      <BoundTo>310330a0-8d39-40ab-b31b-85f994bc043b</BoundTo>
+      <DependentUpon>SendEmailAndValidate.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerSequenceNumNRecID.cs">
+      <id>cea9604d-02f1-4af4-bb0e-1fcf089ef975</id>
+      <BoundTo>fbac8e5d-cb16-46d5-ad31-23fffffbddf6</BoundTo>
+      <DependentUpon>SetDataViewerSequenceNumNRecID.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerSequenceNumNRecID.UserCode.cs">
+      <id>0eb104ee-5bfa-4967-a08a-8e9d133f6e68</id>
+      <BoundTo>fbac8e5d-cb16-46d5-ad31-23fffffbddf6</BoundTo>
+      <DependentUpon>SetDataViewerSequenceNumNRecID.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerToDateEnteredView.cs">
+      <id>6cbe533a-5aae-4b19-9556-977f9fe86260</id>
+      <BoundTo>e22d29f5-cf83-47b9-979f-b751c2136726</BoundTo>
+      <DependentUpon>SetDataViewerToDateEnteredView.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerToDateEnteredView.UserCode.cs">
+      <id>36c0ded3-3800-4523-9d0e-6efe35fc44d8</id>
+      <BoundTo>e22d29f5-cf83-47b9-979f-b751c2136726</BoundTo>
+      <DependentUpon>SetDataViewerToDateEnteredView.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerWithLotAndBlock.cs">
+      <id>fb0e070f-488c-4c9b-9c0e-b6e67d5a2412</id>
+      <BoundTo>c72b8d70-71a8-48d2-b639-a1c32925fdcf</BoundTo>
+      <DependentUpon>SetDataViewerWithLotAndBlock.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerWithLotAndBlock.UserCode.cs">
+      <id>61fe8304-4025-43ea-91a8-8298d935cd15</id>
+      <BoundTo>c72b8d70-71a8-48d2-b639-a1c32925fdcf</BoundTo>
+      <DependentUpon>SetDataViewerWithLotAndBlock.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerWithRefNoAndAddress.cs">
+      <id>830804c9-9ee5-4cb2-ae4c-df64b64f25ba</id>
+      <BoundTo>0208d492-6a78-46ee-b01e-73daab5a41d1</BoundTo>
+      <DependentUpon>SetDataViewerWithRefNoAndAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerWithRefNoAndAddress.UserCode.cs">
+      <id>85523d39-4594-4dcd-a916-57916b9a2237</id>
+      <BoundTo>0208d492-6a78-46ee-b01e-73daab5a41d1</BoundTo>
+      <DependentUpon>SetDataViewerWithRefNoAndAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortAscendingOnRecordIDAndCacheIt.cs">
+      <id>8cea57df-b6c5-4153-898d-de2f0c1a08af</id>
+      <BoundTo>90b30bf9-7f61-4d60-aaa5-511c931023dc</BoundTo>
+      <DependentUpon>SortAscendingOnRecordIDAndCacheIt.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortAscendingOnRecordIDAndCacheIt.UserCode.cs">
+      <id>a38ef935-5575-46eb-a765-a196228d9616</id>
+      <BoundTo>90b30bf9-7f61-4d60-aaa5-511c931023dc</BoundTo>
+      <DependentUpon>SortAscendingOnRecordIDAndCacheIt.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByApplicantAddress.cs">
+      <id>2c1f10fd-5f4a-46b9-852c-5a43233ae058</id>
+      <BoundTo>58b19575-c447-4ede-9322-c6046561a89c</BoundTo>
+      <DependentUpon>SortByApplicantAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByApplicantAddress.UserCode.cs">
+      <id>a25df2b9-d78b-4b52-8c42-6c3ced522916</id>
+      <BoundTo>58b19575-c447-4ede-9322-c6046561a89c</BoundTo>
+      <DependentUpon>SortByApplicantAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByRecordID.cs">
+      <id>ab30b9e3-b8c6-4d94-bd37-b2c3187c474c</id>
+      <BoundTo>c98ab72d-7b18-4629-81ef-81420825c6f8</BoundTo>
+      <DependentUpon>SortByRecordID.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByRecordID.UserCode.cs">
+      <id>6fdf6921-798d-43b5-8625-f348b89f7b73</id>
+      <BoundTo>c98ab72d-7b18-4629-81ef-81420825c6f8</BoundTo>
+      <DependentUpon>SortByRecordID.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByStatus.cs">
+      <id>bb8524cb-9557-47f8-afc0-93654659d0bc</id>
+      <BoundTo>ce55647d-b5d9-42f6-ade9-4fcbb7ea21f5</BoundTo>
+      <DependentUpon>SortByStatus.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByStatus.UserCode.cs">
+      <id>3ce16989-6b39-4855-8e8c-378a0722c1e4</id>
+      <BoundTo>ce55647d-b5d9-42f6-ade9-4fcbb7ea21f5</BoundTo>
+      <DependentUpon>SortByStatus.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortDataViewer.cs">
+      <id>f5860935-d783-46ab-b1de-2f36ae849520</id>
+      <BoundTo>035b9eaf-a1d3-4c8f-9fd4-170c3cf416a5</BoundTo>
+      <DependentUpon>SortDataViewer.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortDataViewer.UserCode.cs">
+      <id>0d45de93-f92f-48be-8cfe-b70687b4e4a5</id>
+      <BoundTo>035b9eaf-a1d3-4c8f-9fd4-170c3cf416a5</BoundTo>
+      <DependentUpon>SortDataViewer.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\UploadFile.cs">
+      <id>6680248f-cd61-4722-a52d-dc9698c30ad8</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateAddedFields.cs">
+      <id>6901de4a-9455-4f77-bcbf-f3987559865d</id>
+      <BoundTo>9fb627b4-398c-49cb-a264-e142082b8d29</BoundTo>
+      <DependentUpon>ValidateAddedFields.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateAddedFields.UserCode.cs">
+      <id>eb34fdbc-ac9f-4b39-92d8-5c508df86536</id>
+      <BoundTo>9fb627b4-398c-49cb-a264-e142082b8d29</BoundTo>
+      <DependentUpon>ValidateAddedFields.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateDeletedRecordRefNum.cs">
+      <id>2d2b669f-a313-405c-960b-8f3c033e189c</id>
+      <BoundTo>31b2d431-cefc-4abe-94bd-d76a489154f0</BoundTo>
+      <DependentUpon>ValidateDeletedRecordRefNum.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateDeletedRecordRefNum.UserCode.cs">
+      <id>e81ca312-c983-48e7-a83a-0e9ce1d2f238</id>
+      <BoundTo>31b2d431-cefc-4abe-94bd-d76a489154f0</BoundTo>
+      <DependentUpon>ValidateDeletedRecordRefNum.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateInputFieldsAreEmpty.cs">
+      <id>b80c802c-40d3-473e-b749-13c8768e9a40</id>
+      <BoundTo>09712f98-c610-4217-a050-727275cc53de</BoundTo>
+      <DependentUpon>ValidateInputFieldsAreEmpty.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateInputFieldsAreEmpty.UserCode.cs">
+      <id>c120c827-eea1-425d-a162-663dc42fabe5</id>
+      <BoundTo>09712f98-c610-4217-a050-727275cc53de</BoundTo>
+      <DependentUpon>ValidateInputFieldsAreEmpty.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateNewSetOfFields.cs">
+      <id>a7268f57-d076-45a3-af5e-2491276761a9</id>
+      <BoundTo>315fbc57-69e7-4568-a6f0-101802bc4e60</BoundTo>
+      <DependentUpon>ValidateNewSetOfFields.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateNewSetOfFields.UserCode.cs">
+      <id>445e903b-cfdd-4083-8db2-120d4286e935</id>
+      <BoundTo>315fbc57-69e7-4568-a6f0-101802bc4e60</BoundTo>
+      <DependentUpon>ValidateNewSetOfFields.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateRemovedFilters.cs">
+      <id>3e64251d-13c6-4384-9e24-ce8fd9372836</id>
+      <BoundTo>f061c0b2-61a1-45cd-b44e-53c1025486da</BoundTo>
+      <DependentUpon>ValidateRemovedFilters.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateRemovedFilters.UserCode.cs">
+      <id>73223177-d746-4b48-afe4-a4a8a200320e</id>
+      <BoundTo>f061c0b2-61a1-45cd-b44e-53c1025486da</BoundTo>
+      <DependentUpon>ValidateRemovedFilters.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateRestoredRecord.cs">
+      <id>72f12c0a-cb7b-43fe-8bc6-827d7faa51bb</id>
+      <BoundTo>07edb106-da07-414e-861a-c337da74fd02</BoundTo>
+      <DependentUpon>ValidateRestoredRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateRestoredRecord.UserCode.cs">
+      <id>c740610d-d643-4766-be4d-9e1a9787d868</id>
+      <BoundTo>07edb106-da07-414e-861a-c337da74fd02</BoundTo>
+      <DependentUpon>ValidateRestoredRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateTheDisplayOfRenewalLetter.cs">
+      <id>189df438-2e2e-420a-8463-a322156617d6</id>
+      <BoundTo>3e7f305a-00f6-409c-9ff8-4e5a322fa3fe</BoundTo>
+      <DependentUpon>ValidateTheDisplayOfRenewalLetter.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateTheDisplayOfRenewalLetter.UserCode.cs">
+      <id>dfbcbdea-dca0-44c5-8661-b7e6565869bd</id>
+      <BoundTo>3e7f305a-00f6-409c-9ff8-4e5a322fa3fe</BoundTo>
+      <DependentUpon>ValidateTheDisplayOfRenewalLetter.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidationsOnRefNumAndAddress.cs">
+      <id>d3eeb0f6-9419-4d04-87e0-3dfd971bc487</id>
+      <BoundTo>80f683fa-6da8-47fd-8be2-6507d8df202c</BoundTo>
+      <DependentUpon>ValidationsOnRefNumAndAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidationsOnRefNumAndAddress.UserCode.cs">
+      <id>688a194b-38fe-4fee-86b7-56785c261faa</id>
+      <BoundTo>80f683fa-6da8-47fd-8be2-6507d8df202c</BoundTo>
+      <DependentUpon>ValidationsOnRefNumAndAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyApplicationDateMatchesSysDateTime.cs">
+      <id>88b5ab59-9ec1-4f89-ac85-652f8c916589</id>
+      <DependentUpon>VerifyApplicationDateMatchesSysDateTime.rxrec</DependentUpon>
+      <BoundTo>eefedacb-eaf4-4fc0-876b-7910d4f6dbbf</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyApplicationDateMatchesSysDateTime.UserCode.cs">
+      <id>e5f39b52-6506-4d9f-af73-e4442390cd8e</id>
+      <DependentUpon>VerifyApplicationDateMatchesSysDateTime.rxrec</DependentUpon>
+      <BoundTo>eefedacb-eaf4-4fc0-876b-7910d4f6dbbf</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyEditedOnMatchesTheSysDate.cs">
+      <id>01e06024-2eda-4268-a6f9-dcd18ef0319e</id>
+      <DependentUpon>VerifyEditedOnMatchesTheSysDate.rxrec</DependentUpon>
+      <BoundTo>7ffea0a8-18f9-4de6-a619-d7a7ba1a5b8f</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyEditedOnMatchesTheSysDate.UserCode.cs">
+      <id>d7148af2-a275-4cd6-8bd7-0137abe53bcc</id>
+      <DependentUpon>VerifyEditedOnMatchesTheSysDate.rxrec</DependentUpon>
+      <BoundTo>7ffea0a8-18f9-4de6-a619-d7a7ba1a5b8f</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyLogDetails.cs">
+      <id>faa289ac-d34e-4b47-9ebb-d1c72d098904</id>
+      <BoundTo>26ad6373-6ab1-44c9-bea1-65b0564cc836</BoundTo>
+      <DependentUpon>VerifyLogDetails.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyLogDetails.UserCode.cs">
+      <id>30d3880c-e1d3-490d-8e9c-71b4a07860df</id>
+      <BoundTo>26ad6373-6ab1-44c9-bea1-65b0564cc836</BoundTo>
+      <DependentUpon>VerifyLogDetails.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyLogRecordMatches.cs">
+      <id>873e8d29-bfd1-4121-acab-599dda68f44d</id>
+      <BoundTo>d3973b5d-75dc-4ca5-9d0e-177ece122c2d</BoundTo>
+      <DependentUpon>VerifyLogRecordMatches.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyLogRecordMatches.UserCode.cs">
+      <id>1f9ec597-7d7d-4717-abe1-1fefd41d427f</id>
+      <BoundTo>d3973b5d-75dc-4ca5-9d0e-177ece122c2d</BoundTo>
+      <DependentUpon>VerifyLogRecordMatches.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyRecordHistory.cs">
+      <id>1641bd90-6aa3-42db-89e9-a85a4cb3f468</id>
+      <BoundTo>7524a58c-2146-41a8-994a-5d8eff9e8db3</BoundTo>
+      <DependentUpon>VerifyRecordHistory.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyRecordHistory.UserCode.cs">
+      <id>64dc2036-61c3-4690-b981-b90a3e726719</id>
+      <BoundTo>7524a58c-2146-41a8-994a-5d8eff9e8db3</BoundTo>
+      <DependentUpon>VerifyRecordHistory.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifySaveNew.cs">
+      <id>8e1afea7-179e-49cb-b3bc-2b92751a8dbe</id>
+      <DependentUpon>VerifySaveNew.rxrec</DependentUpon>
+      <BoundTo>8017ae82-65ea-45f7-829b-32ee35950515</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifySaveNew.UserCode.cs">
+      <id>f4ebb4f7-3c03-4470-9e6b-2b38ff2770cb</id>
+      <DependentUpon>VerifySaveNew.rxrec</DependentUpon>
+      <BoundTo>8017ae82-65ea-45f7-829b-32ee35950515</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerrifyLogDetailsUpdated.cs">
+      <id>de2744b7-06b1-4762-9369-581497bc0079</id>
+      <BoundTo>552d4139-5403-4f27-aba7-09fcbb1c42b5</BoundTo>
+      <DependentUpon>VerrifyLogDetailsUpdated.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerrifyLogDetailsUpdated.UserCode.cs">
+      <id>9adc04fb-c84e-4b95-8ae2-8eed2ecac40a</id>
+      <BoundTo>552d4139-5403-4f27-aba7-09fcbb1c42b5</BoundTo>
+      <DependentUpon>VerrifyLogDetailsUpdated.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ViewForm.cs">
+      <id>772b7e19-8e83-4080-9827-aebf40026319</id>
+      <BoundTo>b098d3c4-a476-4005-ab16-bb1cf48656b2</BoundTo>
+      <DependentUpon>ViewForm.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ViewForm.UserCode.cs">
+      <id>106e0341-97c6-4f61-818e-869f677a612f</id>
+      <BoundTo>b098d3c4-a476-4005-ab16-bb1cf48656b2</BoundTo>
+      <DependentUpon>ViewForm.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ViewNewlyCreatedRecord.cs">
+      <id>87492fe1-2bba-45dc-960d-c5fc3e8774d2</id>
+      <BoundTo>73301afb-6159-4461-971d-2cb57ea1c682</BoundTo>
+      <DependentUpon>ViewNewlyCreatedRecord.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\DataViewer\ViewNewlyCreatedRecord.UserCode.cs">
+      <id>db551908-7775-4759-b856-828bb9bd0df4</id>
+      <BoundTo>73301afb-6159-4461-971d-2cb57ea1c682</BoundTo>
+      <DependentUpon>ViewNewlyCreatedRecord.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\AddTileOperation.cs">
+      <id>8c470047-a1b3-4599-8a24-0160fdaf5506</id>
+      <DependentUpon>AddTileOperation.rxrec</DependentUpon>
+      <BoundTo>7524ea5f-81fa-4559-9d7f-fa7a32684cdd</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\AddTileOperation.UserCode.cs">
+      <id>30a09c41-ffc9-47b1-ad30-0396039ec736</id>
+      <DependentUpon>AddTileOperation.rxrec</DependentUpon>
+      <BoundTo>7524ea5f-81fa-4559-9d7f-fa7a32684cdd</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelInDeleteTileFunctionality.cs">
+      <id>b04a6243-4566-467d-b9e5-e776f79aff91</id>
+      <BoundTo>b99546b6-50a9-4657-9f73-8b92f4a274af</BoundTo>
+      <DependentUpon>CancelInDeleteTileFunctionality.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelInDeleteTileFunctionality.UserCode.cs">
+      <id>73922e98-6792-4e72-925b-bc0da8fbbac5</id>
+      <BoundTo>b99546b6-50a9-4657-9f73-8b92f4a274af</BoundTo>
+      <DependentUpon>CancelInDeleteTileFunctionality.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelInShareTile.cs">
+      <id>62d2f166-8ec0-4017-98af-04b7321575e2</id>
+      <BoundTo>29089a97-aa16-473a-8a61-491bc6f073e6</BoundTo>
+      <DependentUpon>CancelInShareTile.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelInShareTile.UserCode.cs">
+      <id>5b15271c-f6f4-4444-aec5-43c3ea9f1192</id>
+      <BoundTo>29089a97-aa16-473a-8a61-491bc6f073e6</BoundTo>
+      <DependentUpon>CancelInShareTile.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelViewOperation.cs">
+      <id>35421a49-9138-4407-9ccb-1de1809c9d79</id>
+      <BoundTo>d62f0b6c-6a25-45b7-b9f7-691dc15d486e</BoundTo>
+      <DependentUpon>CancelViewOperation.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelViewOperation.UserCode.cs">
+      <id>0e68ed99-c772-41a8-a607-b58a8bbd7ccb</id>
+      <BoundTo>d62f0b6c-6a25-45b7-b9f7-691dc15d486e</BoundTo>
+      <DependentUpon>CancelViewOperation.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseApplication.cs">
+      <DependentUpon>CloseApplication.rxrec</DependentUpon>
+      <id>6389d985-a27b-44e1-9e33-dfdc67dd0c53</id>
+      <BoundTo>2fcdc366-822e-4a6f-b0be-9f489dc491bb</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseApplication.UserCode.cs">
+      <DependentUpon>CloseApplication.rxrec</DependentUpon>
+      <id>dc57baff-9758-493f-9e41-9108402c6288</id>
+      <BoundTo>2fcdc366-822e-4a6f-b0be-9f489dc491bb</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseEnlargedRecentRecords.cs">
+      <id>daa2d75e-8823-45b5-ac45-be47a3e528d5</id>
+      <BoundTo>78ecab67-bb55-48c9-9dd7-bd973268be06</BoundTo>
+      <DependentUpon>CloseEnlargedRecentRecords.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseEnlargedRecentRecords.UserCode.cs">
+      <id>4ce81c1a-7968-4d6f-bedf-d18869c99e1f</id>
+      <BoundTo>78ecab67-bb55-48c9-9dd7-bd973268be06</BoundTo>
+      <DependentUpon>CloseEnlargedRecentRecords.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseTileFunctionality.cs">
+      <id>3e8cdc11-5097-43bc-8d89-f4cfb384fb78</id>
+      <DependentUpon>CloseTileFunctionality.rxrec</DependentUpon>
+      <BoundTo>e8cd7934-c227-49cf-93ee-f684577f63b2</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseTileFunctionality.UserCode.cs">
+      <id>e5d43c0d-6869-4390-8c3f-9c7c60b088f7</id>
+      <DependentUpon>CloseTileFunctionality.rxrec</DependentUpon>
+      <BoundTo>e8cd7934-c227-49cf-93ee-f684577f63b2</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFifthView.cs">
+      <id>04084db1-afd4-438e-b115-1ccb66d53af5</id>
+      <DependentUpon>CreateFifthView.rxrec</DependentUpon>
+      <BoundTo>744b860d-bafe-4267-89f5-3baafebe2141</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFifthView.UserCode.cs">
+      <id>00f6383d-b22f-4b09-8fc9-379d218e276b</id>
+      <DependentUpon>CreateFifthView.rxrec</DependentUpon>
+      <BoundTo>744b860d-bafe-4267-89f5-3baafebe2141</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFirstView.cs">
+      <id>60e22a24-832c-4a4f-9efb-6e9aac6e698d</id>
+      <DependentUpon>CreateFirstView.rxrec</DependentUpon>
+      <BoundTo>60b81be8-07b8-4f62-a83f-9408311d6280</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFirstView.UserCode.cs">
+      <id>ed844761-aac2-4f33-adc8-35f10d2c7ab4</id>
+      <DependentUpon>CreateFirstView.rxrec</DependentUpon>
+      <BoundTo>60b81be8-07b8-4f62-a83f-9408311d6280</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFourthView.cs">
+      <id>779c3e68-be17-440f-bea4-f935b59bb1d1</id>
+      <DependentUpon>CreateFourthView.rxrec</DependentUpon>
+      <BoundTo>811e1271-c2ae-4774-8202-6265b456d2fb</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFourthView.UserCode.cs">
+      <id>b83b1fdb-0db8-4887-8973-d151e2b87add</id>
+      <DependentUpon>CreateFourthView.rxrec</DependentUpon>
+      <BoundTo>811e1271-c2ae-4774-8202-6265b456d2fb</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateSecondView.cs">
+      <id>d9e0b597-72a4-4c15-8dca-1f46d46ffead</id>
+      <DependentUpon>CreateSecondView.rxrec</DependentUpon>
+      <BoundTo>6f700dac-ecde-4161-b7aa-e294d51b7f76</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateSecondView.UserCode.cs">
+      <id>146e1e0c-bc81-48ee-be62-94d4ac0a4864</id>
+      <DependentUpon>CreateSecondView.rxrec</DependentUpon>
+      <BoundTo>6f700dac-ecde-4161-b7aa-e294d51b7f76</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateThirdview.cs">
+      <id>33ab3773-3a46-4724-90de-88bfe95a1a72</id>
+      <DependentUpon>CreateThirdview.rxrec</DependentUpon>
+      <BoundTo>14f1fc04-7052-4dc6-882c-0e60a0d4b0c6</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateThirdview.UserCode.cs">
+      <id>69ad6f1b-4759-412c-810e-901f6c127084</id>
+      <DependentUpon>CreateThirdview.rxrec</DependentUpon>
+      <BoundTo>14f1fc04-7052-4dc6-882c-0e60a0d4b0c6</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewFour.cs">
+      <id>7d3a7acb-731e-4442-ae13-c7838bd60b2e</id>
+      <BoundTo>f74a65e5-c89b-4268-9fbb-795fecf93a95</BoundTo>
+      <DependentUpon>CreateViewFour.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewFour.UserCode.cs">
+      <id>45930e9f-3ec7-47db-8da7-adc45a5206a4</id>
+      <BoundTo>f74a65e5-c89b-4268-9fbb-795fecf93a95</BoundTo>
+      <DependentUpon>CreateViewFour.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewOne.cs">
+      <id>68efe8c3-11d1-4cbd-870e-b9348b89bb8e</id>
+      <DependentUpon>CreateViewOne.rxrec</DependentUpon>
+      <BoundTo>8b905e01-7738-4bf4-862c-2a0d8c7386c1</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewOne.UserCode.cs">
+      <id>f8a30afc-1096-414f-98e6-007c0164960a</id>
+      <DependentUpon>CreateViewOne.rxrec</DependentUpon>
+      <BoundTo>8b905e01-7738-4bf4-862c-2a0d8c7386c1</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewThree.cs">
+      <id>f08b64c3-21b5-4454-b358-8471caf2881c</id>
+      <BoundTo>12957412-7df0-4ba2-ac9d-b0729d6b533f</BoundTo>
+      <DependentUpon>CreateViewThree.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewThree.UserCode.cs">
+      <id>8c8dc71e-35fe-4fbb-94a1-c224ec75a503</id>
+      <BoundTo>12957412-7df0-4ba2-ac9d-b0729d6b533f</BoundTo>
+      <DependentUpon>CreateViewThree.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewTwo.cs">
+      <id>e8d2bdf9-3289-4182-8309-38793e883ab0</id>
+      <BoundTo>f2a47a17-107f-4ba6-9274-34c97eed6339</BoundTo>
+      <DependentUpon>CreateViewTwo.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewTwo.UserCode.cs">
+      <id>ef18f9ba-0f8f-4625-b704-13d6c85b9286</id>
+      <BoundTo>f2a47a17-107f-4ba6-9274-34c97eed6339</BoundTo>
+      <DependentUpon>CreateViewTwo.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteCreatedViews.cs">
+      <id>3384bc5e-3307-46a2-87a3-1729ec5ac88c</id>
+      <DependentUpon>DeleteCreatedViews.rxrec</DependentUpon>
+      <BoundTo>87d4f434-b934-4239-95b9-dca703b155e7</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteCreatedViews.UserCode.cs">
+      <id>c0c49540-7ced-4186-94a8-4719369fdbd3</id>
+      <DependentUpon>DeleteCreatedViews.rxrec</DependentUpon>
+      <BoundTo>87d4f434-b934-4239-95b9-dca703b155e7</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteExistingTiles.cs">
+      <id>ef6d32df-af04-4028-8999-099a06e91b52</id>
+      <BoundTo>62de1024-ced8-4f63-bde9-bf0b136bef89</BoundTo>
+      <DependentUpon>DeleteExistingTiles.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteExistingTiles.UserCode.cs">
+      <id>bb37141d-3a68-4820-9c07-770961f10d67</id>
+      <BoundTo>62de1024-ced8-4f63-bde9-bf0b136bef89</BoundTo>
+      <DependentUpon>DeleteExistingTiles.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteSharedTile.cs">
+      <id>9f069afe-8904-4e40-9650-ae400c1f999c</id>
+      <BoundTo>957e56cf-b700-4c8f-a484-cbe5e4a3aca2</BoundTo>
+      <DependentUpon>DeleteSharedTile.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteSharedTile.UserCode.cs">
+      <id>8c166c8b-868d-42ae-8e9e-4849eca74194</id>
+      <BoundTo>957e56cf-b700-4c8f-a484-cbe5e4a3aca2</BoundTo>
+      <DependentUpon>DeleteSharedTile.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteTileFunctionality.cs">
+      <id>0073277e-f872-4b6b-bef0-50ac1e07077b</id>
+      <BoundTo>520f8164-903b-4fcc-af90-477485f9dfb2</BoundTo>
+      <DependentUpon>DeleteTileFunctionality.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteTileFunctionality.UserCode.cs">
+      <id>8cc0b8b1-2e20-4e5d-a547-996a31daad12</id>
+      <BoundTo>520f8164-903b-4fcc-af90-477485f9dfb2</BoundTo>
+      <DependentUpon>DeleteTileFunctionality.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeletionOfExistingTiles.cs">
+      <id>3ca28288-9722-4d20-971a-06093048889a</id>
+      <DependentUpon>DeletionOfExistingTiles.rxrec</DependentUpon>
+      <BoundTo>a0770edc-cbea-4ecc-bb63-7b39c7ba411b</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeletionOfExistingTiles.UserCode.cs">
+      <id>3f73c48c-8cf0-4042-b350-24b7cb03b6ad</id>
+      <DependentUpon>DeletionOfExistingTiles.rxrec</DependentUpon>
+      <BoundTo>a0770edc-cbea-4ecc-bb63-7b39c7ba411b</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\EnlargedRecentRecords_Close.cs">
+      <id>bd1dce59-f475-4c30-a2b7-5ceff167cf79</id>
+      <BoundTo>f411eec1-6e8a-4785-9f58-6a54f77fbec0</BoundTo>
+      <DependentUpon>EnlargedRecentRecords_Close.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\EnlargedRecentRecords_Close.UserCode.cs">
+      <id>309b44cd-71d4-4ba7-b2b8-c760510f6612</id>
+      <BoundTo>f411eec1-6e8a-4785-9f58-6a54f77fbec0</BoundTo>
+      <DependentUpon>EnlargedRecentRecords_Close.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\EnlargedRecentRecords_Minimize.cs">
+      <id>eef6eb83-9d06-4c7c-9441-7c6356a1096d</id>
+      <BoundTo>b6c3b5eb-b282-4122-ab74-32d7e4fb065c</BoundTo>
+      <DependentUpon>EnlargedRecentRecords_Minimize.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\EnlargedRecentRecords_Minimize.UserCode.cs">
+      <id>97132557-0e37-4954-b7d5-4e823a731bb4</id>
+      <BoundTo>b6c3b5eb-b282-4122-ab74-32d7e4fb065c</BoundTo>
+      <DependentUpon>EnlargedRecentRecords_Minimize.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\HideTileFunctionality.cs">
+      <id>404053bb-0d4c-48ed-8765-d9f73d237c56</id>
+      <BoundTo>4eeabdb2-91a4-4db8-824b-798f44ce6b03</BoundTo>
+      <DependentUpon>HideTileFunctionality.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\HideTileFunctionality.UserCode.cs">
+      <id>9d5d426c-5b5b-4452-bd18-6bb7a4977dcb</id>
+      <BoundTo>4eeabdb2-91a4-4db8-824b-798f44ce6b03</BoundTo>
+      <DependentUpon>HideTileFunctionality.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\LaunchApplication.cs">
+      <DependentUpon>LaunchApplication.rxrec</DependentUpon>
+      <id>cc9d9deb-c4f1-4dd4-b66f-c6035d9aed9a</id>
+      <BoundTo>9337af97-2cb4-475f-8721-ea863af1e185</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\LaunchApplication.UserCode.cs">
+      <DependentUpon>LaunchApplication.rxrec</DependentUpon>
+      <id>53263e36-51a6-4eb9-976c-7b7f7afca979</id>
+      <BoundTo>9337af97-2cb4-475f-8721-ea863af1e185</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\LoginToVerifyShareTile.cs">
+      <id>9ef6871c-094b-4d90-ad1b-50a9f2b09802</id>
+      <BoundTo>ac26d1ad-cea9-4b60-813c-fcc687e2c8f6</BoundTo>
+      <DependentUpon>LoginToVerifyShareTile.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\LoginToVerifyShareTile.UserCode.cs">
+      <id>59dfcd95-43e4-40c0-accf-f267b6d95874</id>
+      <BoundTo>ac26d1ad-cea9-4b60-813c-fcc687e2c8f6</BoundTo>
+      <DependentUpon>LoginToVerifyShareTile.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\MinimizeEnlargedRecentRecords.cs">
+      <id>7b72f770-fc37-4869-b30a-158d0ded1892</id>
+      <BoundTo>e9626eb4-737f-431a-803e-833755fb400b</BoundTo>
+      <DependentUpon>MinimizeEnlargedRecentRecords.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\MinimizeEnlargedRecentRecords.UserCode.cs">
+      <id>5cbd3b4c-a70d-4910-bea5-ff8df969efe8</id>
+      <BoundTo>e9626eb4-737f-431a-803e-833755fb400b</BoundTo>
+      <DependentUpon>MinimizeEnlargedRecentRecords.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\RecentRecordsEnlargedView.cs">
+      <id>ae7739b0-8002-4526-9f73-af64443b80ba</id>
+      <BoundTo>0dcda78c-73e2-4637-8b69-ae4c0b565970</BoundTo>
+      <DependentUpon>RecentRecordsEnlargedView.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\RecentRecordsEnlargedView.UserCode.cs">
+      <id>695f6e09-f5c5-4996-9c25-24d48e5d720a</id>
+      <BoundTo>0dcda78c-73e2-4637-8b69-ae4c0b565970</BoundTo>
+      <DependentUpon>RecentRecordsEnlargedView.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\RecentRecordsTable.cs">
+      <id>beebdc44-6340-4a29-a9fa-eb76c2b6cf9f</id>
+      <BoundTo>4d833dda-6876-46c5-aaf9-8f56b2da909e</BoundTo>
+      <DependentUpon>RecentRecordsTable.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\RecentRecordsTable.UserCode.cs">
+      <id>935f6e5c-4e4f-4eb7-b086-541dd6f7c5ed</id>
+      <BoundTo>4d833dda-6876-46c5-aaf9-8f56b2da909e</BoundTo>
+      <DependentUpon>RecentRecordsTable.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\ResolutionBack.cs">
+      <DependentUpon>ResolutionBack.rxrec</DependentUpon>
+      <id>c43955cf-20bb-4bb0-ab1f-e9cba27bd35c</id>
+      <BoundTo>a927d74e-581d-4125-9c55-80afba7ad802</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\ResolutionBack.UserCode.cs">
+      <DependentUpon>ResolutionBack.rxrec</DependentUpon>
+      <id>5a6e53b8-79d3-4728-8376-b9e202b5b2e7</id>
+      <BoundTo>a927d74e-581d-4125-9c55-80afba7ad802</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\ResolutionCheck.cs">
+      <DependentUpon>ResolutionCheck.rxrec</DependentUpon>
+      <id>2e0bcb9d-5f46-4fe5-8325-9b3d23e4b920</id>
+      <BoundTo>e8a82f9e-3599-412e-9274-1cd285db1594</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\ResolutionCheck.UserCode.cs">
+      <DependentUpon>ResolutionCheck.rxrec</DependentUpon>
+      <id>4767ee5a-a90a-447b-af78-d3fefd593d6f</id>
+      <BoundTo>e8a82f9e-3599-412e-9274-1cd285db1594</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\SelectModule.cs">
+      <id>cd302d00-302c-41b7-ac6b-7bf989f11a22</id>
+      <BoundTo>0bb4da69-c719-4065-9a5c-d6c367a8dae9</BoundTo>
+      <DependentUpon>SelectModule.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\SelectModule.UserCode.cs">
+      <id>4e345329-3609-4d6d-889a-b38bffa5d7fb</id>
+      <BoundTo>0bb4da69-c719-4065-9a5c-d6c367a8dae9</BoundTo>
+      <DependentUpon>SelectModule.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\ShareTileOperation.cs">
+      <id>e3b3703b-4b30-45d5-bde2-593eaf84ab49</id>
+      <BoundTo>aecb97fc-88b5-4b0e-a8c2-e42f4172c397</BoundTo>
+      <DependentUpon>ShareTileOperation.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\ShareTileOperation.UserCode.cs">
+      <id>48b05693-fb75-4a21-8910-1cf001f63f2f</id>
+      <BoundTo>aecb97fc-88b5-4b0e-a8c2-e42f4172c397</BoundTo>
+      <DependentUpon>ShareTileOperation.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerificationChecks.cs">
+      <id>cd60d6da-062f-44cb-baca-5921cd5a5572</id>
+      <DependentUpon>VerificationChecks.rxrec</DependentUpon>
+      <BoundTo>71562a5e-7859-415a-ab1b-95b9f6ef8440</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerificationChecks.UserCode.cs">
+      <id>dd5866b2-186a-42eb-a0ef-e5fc8e616792</id>
+      <DependentUpon>VerificationChecks.rxrec</DependentUpon>
+      <BoundTo>71562a5e-7859-415a-ab1b-95b9f6ef8440</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyCancelInShareTile.cs">
+      <id>d48b1ee9-053e-4f06-bba8-391cc050e954</id>
+      <BoundTo>c8a9973d-1e31-4035-8ef6-eb4ef1b9528b</BoundTo>
+      <DependentUpon>VerifyCancelInShareTile.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyCancelInShareTile.UserCode.cs">
+      <id>70f14e96-bb15-4a6e-a770-40a937bd9b27</id>
+      <BoundTo>c8a9973d-1e31-4035-8ef6-eb4ef1b9528b</BoundTo>
+      <DependentUpon>VerifyCancelInShareTile.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyShareTileFunctionality.cs">
+      <id>a6b37971-e948-45f1-90de-676f5ffbf290</id>
+      <BoundTo>3641174f-e897-45e3-af5c-3a2a0dfb3748</BoundTo>
+      <DependentUpon>VerifyShareTileFunctionality.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyShareTileFunctionality.UserCode.cs">
+      <id>70e728b9-f9b3-492c-a375-db2b407b64db</id>
+      <BoundTo>3641174f-e897-45e3-af5c-3a2a0dfb3748</BoundTo>
+      <DependentUpon>VerifyShareTileFunctionality.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForFirstView.cs">
+      <id>be375a63-ad31-4e4e-a241-172deace052f</id>
+      <DependentUpon>VerifyViewCountForFirstView.rxrec</DependentUpon>
+      <BoundTo>779415c8-8fab-4032-8e65-4160d58d1446</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForFirstView.UserCode.cs">
+      <id>0f0bbea4-abb1-4f1f-ada0-259cb8f23b6b</id>
+      <DependentUpon>VerifyViewCountForFirstView.rxrec</DependentUpon>
+      <BoundTo>779415c8-8fab-4032-8e65-4160d58d1446</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForFourthView.cs">
+      <id>b46f66f3-be59-406b-81e0-3b340e4ec995</id>
+      <DependentUpon>VerifyViewCountForFourthView.rxrec</DependentUpon>
+      <BoundTo>d4a25d1e-4a7f-4fd0-8ee5-ceb71c53fe7e</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForFourthView.UserCode.cs">
+      <id>fe7c595c-d975-4efd-b04a-d122e5c57488</id>
+      <DependentUpon>VerifyViewCountForFourthView.rxrec</DependentUpon>
+      <BoundTo>d4a25d1e-4a7f-4fd0-8ee5-ceb71c53fe7e</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForSecondView.cs">
+      <id>1174666c-ddce-4fe3-92aa-4d7829f7813b</id>
+      <DependentUpon>VerifyViewCountForSecondView.rxrec</DependentUpon>
+      <BoundTo>eab732d0-fb4f-47c8-bf02-b6a99c9baae7</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForSecondView.UserCode.cs">
+      <id>747f8926-d8df-42fe-aea7-7d54eb391ae7</id>
+      <DependentUpon>VerifyViewCountForSecondView.rxrec</DependentUpon>
+      <BoundTo>eab732d0-fb4f-47c8-bf02-b6a99c9baae7</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForThirdView.cs">
+      <id>96593248-3062-4c4a-be68-a899c7a567e1</id>
+      <DependentUpon>VerifyViewCountForThirdView.rxrec</DependentUpon>
+      <BoundTo>707552bc-82b0-49b3-9ef6-5a6c4f82946f</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForThirdView.UserCode.cs">
+      <id>bbb8433b-0d36-4664-ba98-f2eb1e5ba79d</id>
+      <DependentUpon>VerifyViewCountForThirdView.rxrec</DependentUpon>
+      <BoundTo>707552bc-82b0-49b3-9ef6-5a6c4f82946f</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ApplicantAddressFilter.cs">
+      <id>681450f4-9ba2-4ec5-8667-6dfb3caf165d</id>
+      <BoundTo>6c819bf4-21da-47a2-9ee7-5b603a99ab5c</BoundTo>
+      <DependentUpon>ApplicantAddressFilter.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ApplicantAddressFilter.UserCode.cs">
+      <id>0ffe122a-d8eb-4e7a-9816-c4c0df2191b2</id>
+      <BoundTo>6c819bf4-21da-47a2-9ee7-5b603a99ab5c</BoundTo>
+      <DependentUpon>ApplicantAddressFilter.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\CloseApplicantAddressFilter.cs">
+      <id>5ab72d6f-062f-4693-8fee-7faad0ab8a5d</id>
+      <BoundTo>66d4b9d4-156e-44f6-aa3c-1acca354e455</BoundTo>
+      <DependentUpon>CloseApplicantAddressFilter.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\CloseApplicantAddressFilter.UserCode.cs">
+      <id>e06caeec-1b96-432d-b35b-7d043ef7749c</id>
+      <BoundTo>66d4b9d4-156e-44f6-aa3c-1acca354e455</BoundTo>
+      <DependentUpon>CloseApplicantAddressFilter.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\CloseRecordIDFilter.cs">
+      <id>4c989444-3a99-499a-82f7-2f7e6d033d76</id>
+      <BoundTo>b421febd-4d8e-4e33-a92d-bb65b021c4c3</BoundTo>
+      <DependentUpon>CloseRecordIDFilter.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\CloseRecordIDFilter.UserCode.cs">
+      <id>788115e3-76b6-4ca7-abac-c0dd40da5fd3</id>
+      <BoundTo>b421febd-4d8e-4e33-a92d-bb65b021c4c3</BoundTo>
+      <DependentUpon>CloseRecordIDFilter.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\CloseRefNoFilter.cs">
+      <id>97d565e4-49df-4eff-b604-71adf48bff96</id>
+      <BoundTo>e1583776-0a56-4b98-8e68-cdf55b83f794</BoundTo>
+      <DependentUpon>CloseRefNoFilter.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\CloseRefNoFilter.UserCode.cs">
+      <id>6ba7ea17-2c3e-4364-9c3b-e3284672dc06</id>
+      <BoundTo>e1583776-0a56-4b98-8e68-cdf55b83f794</BoundTo>
+      <DependentUpon>CloseRefNoFilter.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\EnterAssertNameAddress.cs">
+      <id>9fb630f9-22eb-4f2c-84b6-9addedf6f2df</id>
+      <BoundTo>dc4563ff-6876-4405-b463-256351b8b840</BoundTo>
+      <DependentUpon>EnterAssertNameAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\EnterAssertNameAddress.UserCode.cs">
+      <id>faaa01c5-4708-4d3e-be81-5bf0e751eec2</id>
+      <BoundTo>dc4563ff-6876-4405-b463-256351b8b840</BoundTo>
+      <DependentUpon>EnterAssertNameAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\EnterBlockLotAddress.cs">
+      <id>13f836e7-55ea-4796-9931-7ad1a9ae3eb9</id>
+      <BoundTo>d50b7436-2272-4427-8ebd-cdc243aced5e</BoundTo>
+      <DependentUpon>EnterBlockLotAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\EnterBlockLotAddress.UserCode.cs">
+      <id>9b6aea38-02d1-47aa-8dbb-932527cd2d3e</id>
+      <BoundTo>d50b7436-2272-4427-8ebd-cdc243aced5e</BoundTo>
+      <DependentUpon>EnterBlockLotAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ModuleApplicantAddressSelect.cs">
+      <id>c88e3e3b-bb52-4142-9b79-0956331505a4</id>
+      <BoundTo>d9e770f9-caa3-4df2-820f-39486d81004b</BoundTo>
+      <DependentUpon>ModuleApplicantAddressSelect.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ModuleApplicantAddressSelect.UserCode.cs">
+      <id>73e48678-48c4-4041-a524-6d05691754c3</id>
+      <BoundTo>d9e770f9-caa3-4df2-820f-39486d81004b</BoundTo>
+      <DependentUpon>ModuleApplicantAddressSelect.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ModuleRecordIDSelect.cs">
+      <id>545aa821-6006-490c-9fd0-5d06f5a4f5be</id>
+      <BoundTo>52d43b3b-7374-4ce7-a1a5-4e180de9959a</BoundTo>
+      <DependentUpon>ModuleRecordIDSelect.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ModuleRecordIDSelect.UserCode.cs">
+      <id>d708db97-f73a-40fb-a596-369ca64bca6e</id>
+      <BoundTo>52d43b3b-7374-4ce7-a1a5-4e180de9959a</BoundTo>
+      <DependentUpon>ModuleRecordIDSelect.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ModuleRefNoSelect.cs">
+      <id>76fe3e78-9fb6-468d-be5f-bd8824e06011</id>
+      <BoundTo>59d13d30-9bf4-4094-8ab2-ca4fb5841c97</BoundTo>
+      <DependentUpon>ModuleRefNoSelect.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ModuleRefNoSelect.UserCode.cs">
+      <id>b26669e2-a495-4a6c-8a57-667d2ebd4665</id>
+      <BoundTo>59d13d30-9bf4-4094-8ab2-ca4fb5841c97</BoundTo>
+      <DependentUpon>ModuleRefNoSelect.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\RecordIdFilter.cs">
+      <id>f03f3fec-1d95-4f8e-9863-d6602f9d2f7e</id>
+      <BoundTo>491f616b-c988-4a67-998f-e5eeface92fb</BoundTo>
+      <DependentUpon>RecordIdFilter.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\RecordIdFilter.UserCode.cs">
+      <id>39dbd85d-8f59-4f33-967d-e201524ba75f</id>
+      <BoundTo>491f616b-c988-4a67-998f-e5eeface92fb</BoundTo>
+      <DependentUpon>RecordIdFilter.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\RefNoFilter.cs">
+      <id>0733a92f-36e1-4391-a151-ca9d8482b4f1</id>
+      <BoundTo>4f8303b2-876e-4250-a04f-c9a572df587f</BoundTo>
+      <DependentUpon>RefNoFilter.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\RefNoFilter.UserCode.cs">
+      <id>74c411f4-5a82-4c60-bdca-70355aec20e3</id>
+      <BoundTo>4f8303b2-876e-4250-a04f-c9a572df587f</BoundTo>
+      <DependentUpon>RefNoFilter.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\SearchPropertyAddress.cs">
+      <id>b0acdd12-91c3-4f8b-98f6-672a5c5f5f5e</id>
+      <BoundTo>bb636466-a945-4e28-85b5-a713f319d824</BoundTo>
+      <DependentUpon>SearchPropertyAddress.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\SearchPropertyAddress.UserCode.cs">
+      <id>8fca8c7e-fb5e-45c6-a641-048a85206b40</id>
+      <BoundTo>bb636466-a945-4e28-85b5-a713f319d824</BoundTo>
+      <DependentUpon>SearchPropertyAddress.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\SelectDogLicense.cs">
+      <id>46c3e69d-a550-4730-a311-f35b42a9cf47</id>
+      <BoundTo>79bb5a02-a1c9-4d2a-bad9-e596aa72bbf2</BoundTo>
+      <DependentUpon>SelectDogLicense.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\SelectDogLicense.UserCode.cs">
+      <id>d9d5a6a5-9db9-4fb9-84ed-4201d047beb5</id>
+      <BoundTo>79bb5a02-a1c9-4d2a-bad9-e596aa72bbf2</BoundTo>
+      <DependentUpon>SelectDogLicense.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ValidationBlockLotCity.cs">
+      <id>df7b45ec-155c-402f-b3c2-e3a78da40386</id>
+      <BoundTo>2cee2d9e-cc35-408e-9e68-6b253b5d1e63</BoundTo>
+      <DependentUpon>ValidationBlockLotCity.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\Property\ValidationBlockLotCity.UserCode.cs">
+      <id>223c2cfb-502d-49a3-ad7d-d9d2a26b8e66</id>
+      <BoundTo>2cee2d9e-cc35-408e-9e68-6b253b5d1e63</BoundTo>
+      <DependentUpon>ValidationBlockLotCity.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\LaunchBrowser.cs">
+      <id>b2ddf4b5-8e47-4abb-ba80-3c805ba1090c</id>
+      <BoundTo>ad9cdfb8-1741-4c25-b764-b9f1bd5fd8a7</BoundTo>
+      <DependentUpon>LaunchBrowser.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\LaunchBrowser.UserCode.cs">
+      <id>daa5be9b-a375-499c-926a-94d5f177881a</id>
+      <BoundTo>ad9cdfb8-1741-4c25-b764-b9f1bd5fd8a7</BoundTo>
+      <DependentUpon>LaunchBrowser.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\LaunchingPublicFormURL.cs">
+      <id>96200e3a-a78d-4b0a-84c0-79cf5861c78d</id>
+      <BoundTo>996b4b98-cec0-48d0-a6a0-cd0dd41481b4</BoundTo>
+      <DependentUpon>LaunchingPublicFormURL.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\LaunchingPublicFormURL.UserCode.cs">
+      <id>b8a37fd5-9ece-444b-9355-80abe43d8122</id>
+      <BoundTo>996b4b98-cec0-48d0-a6a0-cd0dd41481b4</BoundTo>
+      <DependentUpon>LaunchingPublicFormURL.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormSubmitInValidForm.cs">
+      <id>d940d862-8934-4b4f-91f3-cf26dddd141a</id>
+      <DependentUpon>PublicFormSubmitInValidForm.rxrec</DependentUpon>
+      <BoundTo>87912d7e-2940-412b-9b7d-2aafde75d702</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormSubmitInValidForm.UserCode.cs">
+      <id>dba1fa1e-38ba-4e78-94e0-63b7bfbef6a0</id>
+      <DependentUpon>PublicFormSubmitInValidForm.rxrec</DependentUpon>
+      <BoundTo>87912d7e-2940-412b-9b7d-2aafde75d702</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormSuspendedAccount.cs">
+      <id>3320d0cf-9a68-4a1a-9cc0-ed1916b3c330</id>
+      <BoundTo>ceba2b81-cf43-44e1-a3d0-f2972f2ff14b</BoundTo>
+      <DependentUpon>PublicFormSuspendedAccount.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormSuspendedAccount.UserCode.cs">
+      <id>c2d19c60-ac4a-422e-8b1e-474003d76221</id>
+      <BoundTo>ceba2b81-cf43-44e1-a3d0-f2972f2ff14b</BoundTo>
+      <DependentUpon>PublicFormSuspendedAccount.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormsWithParcelidenti.cs">
+      <id>4da9807a-042a-4ea3-ad80-335418cc5925</id>
+      <DependentUpon>PublicFormsWithParcelidenti.rxrec</DependentUpon>
+      <BoundTo>22035f80-dfc1-450b-b822-f719f6fba9ca</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormsWithParcelidenti.UserCode.cs">
+      <id>0edf236d-a26c-4ea7-83af-89860e782c15</id>
+      <DependentUpon>PublicFormsWithParcelidenti.rxrec</DependentUpon>
+      <BoundTo>22035f80-dfc1-450b-b822-f719f6fba9ca</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithLocation.cs">
+      <id>aac5bb5e-908e-446d-8a9a-8d7edefbd446</id>
+      <DependentUpon>PublicFormWithLocation.rxrec</DependentUpon>
+      <BoundTo>96107e1d-e161-4d90-9bed-dd5740b35665</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithLocation.UserCode.cs">
+      <id>af9a36ca-1e05-4eee-ba78-9856b62734f1</id>
+      <DependentUpon>PublicFormWithLocation.rxrec</DependentUpon>
+      <BoundTo>96107e1d-e161-4d90-9bed-dd5740b35665</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithNonResidentNoAddress.cs">
+      <id>25238fd0-10ae-438c-b70a-8fc9dacebce1</id>
+      <DependentUpon>PublicFormWithNonResidentNoAddress.rxrec</DependentUpon>
+      <BoundTo>40424dcf-5ea1-4b5f-95d2-13985fab48ca</BoundTo>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithNonResidentNoAddress.UserCode.cs">
+      <id>101ee35c-0dc3-49ca-9c0b-9a1e8dbe1ba1</id>
+      <DependentUpon>PublicFormWithNonResidentNoAddress.rxrec</DependentUpon>
+      <BoundTo>40424dcf-5ea1-4b5f-95d2-13985fab48ca</BoundTo>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\VerifyDogLicenseOnAdminApplication.cs">
+      <id>2ba259f0-f56b-44d0-9e45-c7e1238de7fc</id>
+      <BoundTo>2aa0f6a9-27c7-4c1d-a8df-d495c786e3f2</BoundTo>
+      <DependentUpon>VerifyDogLicenseOnAdminApplication.rxrec</DependentUpon>
+      <RecorderCode>true</RecorderCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\SmokeRecordings\PublicForms\VerifyDogLicenseOnAdminApplication.UserCode.cs">
+      <id>e0858ddc-63da-4fc5-8fc0-d647bf74cffc</id>
+      <BoundTo>2aa0f6a9-27c7-4c1d-a8df-d495c786e3f2</BoundTo>
+      <DependentUpon>VerifyDogLicenseOnAdminApplication.rxrec</DependentUpon>
+      <UserCode>true</UserCode>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\AgeGenerator.cs">
+      <id>88a680e2-4eae-4e46-bdfb-39ecf2003c92</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\ExecutionStatusCheck.cs">
+      <id>b67d2f63-40a0-45a3-845e-6349df5fdb2f</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\FailureHandlingScript.cs">
+      <id>a8f0d437-5fa8-41b7-91b4-c3cdd32e23cb</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\HandleFailure.cs">
+      <id>5ef49f29-4619-4faa-86fe-1443bb8cfe94</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\NameGeneration.cs">
+      <id>cd03b490-f4ec-4df8-bc4e-604b11ce5622</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\PhoneNumber.cs">
+      <id>44e0efc1-97cd-4800-b198-b0ffd7e74fcd</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\PresentOrFutureDateGenerator.cs">
+      <id>9c56c494-34a2-4c67-8b88-da676b7b3a1e</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\RandomPreviousDate.cs">
+      <id>0c76f8f3-d6b9-440c-95a1-cc8115955162</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\RandomTextGenerationZ.cs">
+      <id>2a6e745a-42c9-45c9-98b2-13a0dd1fa281</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\StartWatchingPopUp.cs">
+      <id>5ee88274-dee8-4fac-bd4c-cbb2ded8d8e4</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\StopWatchingPopUp.cs">
+      <id>1a6e619a-1be4-4dfa-8d63-f9cac47df429</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\TestStatusCheck.cs">
+      <id>0e39dcb5-10c4-49c4-b1e0-1ffa785db15a</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\WatchAutoComplete.cs">
+      <id>728320d9-587e-413c-88de-cb78213eabaf</id>
+    </Compile>
+    <Compile Include="GovPilotRecordings\Utilities\ZipCodeGeneration.cs">
+      <id>d80e773f-062e-477a-8618-4b28f3ba8064</id>
+    </Compile>
+    <Compile Include="HelperClass.cs">
+      <id>8c2db7f7-7ffe-424d-b70a-e77e2a4501d8</id>
+    </Compile>
+    <Compile Include="LoadConfig.cs">
+      <id>6d47175b-8d2b-4614-8007-f883f82f61b6</id>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <id>75540b35-4767-43dd-9773-73087386e719</id>
+    </Compile>
+    <Compile Include="GovPilotRepository.cs">
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <DependentUpon>GovPilotRepository.rxrep</DependentUpon>
+      <RepositoryCode>true</RepositoryCode>
+      <id>304caadf-5106-4280-8087-e2c5a7826566</id>
+    </Compile>
+    <Compile Include="LoadConfigData.cs">
+      <id>9e77ee7f-d46d-4d10-86d6-4d19a0a0f0fa</id>
+    </Compile>
+    <Compile Include="Modules\CollectRetryErrorMessagesModule.cs">
+      <id>d60258d5-ed61-440c-bcb4-73a2d5974fca</id>
+    </Compile>
+    <Compile Include="Modules\EmailModule.cs">
+      <id>8f80ef61-08b9-42c0-aab0-c0acccefff09</id>
+    </Compile>
+    <Compile Include="Modules\ReportToPDFModule.cs">
+      <id>92414997-9bc3-49cb-85c8-8fcfcb73ec9b</id>
+    </Compile>
+    <Compile Include="Program.cs">
+      <id>bc5a5ee9-fb38-4341-b544-ccf5df612e19</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\DragNDropLibrary.cs">
+      <id>1fb0fc58-daa7-488f-a83f-008cb0d6dbdb</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\EmailLibrary.cs">
+      <id>f80e71d3-0dd2-4206-881c-a4513a108e6b</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\ExceptionExtensions.cs">
+      <id>6666e8b5-b1b7-45a3-bf58-1f6732366260</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\FileLibrary.cs">
+      <id>12857fb2-eb20-44d3-b346-96ea03ad94e7</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\PopupWatcherLibrary.cs">
+      <id>c52e78a4-7c3d-4c56-aea8-cc7aabf050dd</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\StringLibrary.cs">
+      <id>e9d4c2c2-c4b0-4e4e-9de7-c26b2b714ddb</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\SystemLibrary.cs">
+      <id>149e445f-bbee-4287-aa92-8b49bff0c83e</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\Utils.cs">
+      <id>8291ab81-cf3b-498a-a589-7de7eede0434</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\ValidationLibrary.cs">
+      <id>99041fbe-bc4a-4192-a73b-6635971d7679</id>
+    </Compile>
+    <Compile Include="UserCodeCollections\WebLibrary.cs">
+      <id>03c19e48-cb22-4c89-b6c9-bbb2c69a740f</id>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <id>2fa63fd2-460f-43bf-87de-17459176ddc4</id>
+    </None>
+    <None Include="GovPilotRecordings\CommonFunctions\CloseBrowser.rxrec">
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <id>99582f4b-d153-4376-b097-95e72f61deb4</id>
+      <recordtableid>b4a0c037-a5de-4a6b-912e-a19d8487c850</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\CommonFunctions\GoToHomeScreen.rxrec">
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <id>4896e1cc-a9d1-4273-be48-250e599e975a</id>
+      <recordtableid>d561b374-7260-4df6-ab48-d60e0feb7b8c</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\CommonFunctions\Login.rxrec">
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <id>48f4df5c-628b-46bb-a3be-59280f438b22</id>
+      <recordtableid>1a1f8cc7-610c-4c48-81e7-b57f83393bb7</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\CommonFunctions\OpenBrowser.rxrec">
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <id>205e8d2c-aae7-4547-a7af-06f53833527b</id>
+      <recordtableid>676de0d5-1133-4d72-860c-e869e58c8892</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddAndValidateAddedFilters.rxrec">
+      <id>b9f82dd1-21d7-4af9-8218-fa8f24ae354e</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>3757e7d1-6395-4c58-9601-168a594b0d89</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddFieldsToView.rxrec">
+      <id>0d001023-c9e8-4587-aa5e-b44f5852a322</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>cdd81c1f-bea3-4ab8-a01c-cf03a19d6d94</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\AddFiltersAndCheck.rxrec">
+      <id>a8476dde-ee2b-445d-af66-3339ec7093c2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6b5bc2e2-28fc-4496-8c09-b3d0c7dcd2f3</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\AllView.rxrec">
+      <id>b89791df-0c4c-4f87-be87-26feacfc0102</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>321eb71c-2603-422e-888e-8fb6498155ef</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheFirstSeqNum.rxrec">
+      <id>d8a298a1-11b4-4717-be9f-f90089182d05</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>d7cb23d7-759d-4a37-a829-f377e6892477</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheLotAndBlock.rxrec">
+      <id>b8c31c5b-f1ef-4a64-b21c-fd47fb78ac98</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6f26f842-85b8-4165-af1b-71a4d2ddebc1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheSeqNumAndAddress.rxrec">
+      <id>1ab02beb-e257-4825-9ea6-b38c36195b74</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>9aff600f-da29-487c-a3eb-4bd5278af9c9</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CacheTheSerialNumber.rxrec">
+      <id>2c4788a5-24ef-48ee-b037-7a4b9919e0cb</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>bffadfc3-65bc-4e4a-ac6c-57bcfcfa42f2</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CancelSendEmailAndValidate.rxrec">
+      <id>c79b425d-372e-4da1-a203-de8a2ef4162d</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>c2b42ebb-d4fe-42ac-8c7e-cdf128102d2c</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ChangeStatusForEmailSending.rxrec">
+      <id>f8c80f18-60e1-4e60-b9e1-c2366feb234f</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>d8a20cda-6da6-4e7b-965d-6a5cda48d647</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CheckLogsCorrespondence.rxrec">
+      <id>81e5e626-153e-49da-8c38-85440bc0611a</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>fca61a99-2f40-4d80-a03d-d143d66d8ba7</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloneToDifferentAddress.rxrec">
+      <id>66cd6b6a-3331-4340-ae84-6787e5c9412d</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>3dd82ebe-47c6-4820-82fe-140f4e9fb54d</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseDataViewer.rxrec">
+      <id>3957e13a-7ae6-411b-81f1-c926b2b1a4ac</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6ccaa284-d160-4a85-89fc-433e877b7ba1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseDialog.rxrec">
+      <id>07f40f34-cc75-4d4f-8f9c-46da05aa887b</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>aa9527a3-f667-4b64-8aac-272d0f3f1c89</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseFormAndDataViewer.rxrec">
+      <id>73aa5a68-d6c6-4f0f-8d7a-ba93e7ec7a2d</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>657c471a-2363-4723-b336-77eeae206c28</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ClosePreviousRecord.rxrec">
+      <id>8c54c1a9-960d-4a7a-bb60-9731a1bee211</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>08bc8b70-f82e-4482-8ffb-1f08541d8bd9</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseRecord.rxrec">
+      <id>0cc1a506-38cc-458f-b216-d85da7850d09</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>f278ab02-059d-418d-b4c2-aa8b0b936d4d</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseRecycleBin.rxrec">
+      <id>d295b7ed-d159-45bb-8afc-1fe8190c7487</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>b8465bfd-8dd7-4bcf-8af8-31c9ecc9445e</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CloseScreens.rxrec">
+      <id>73c0db91-77d0-4da5-b053-91e5522310ac</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>682f3396-ca28-4948-b7cd-d22db7f6b50b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewAndCancel.rxrec">
+      <id>66b16b16-4bba-4a85-b87e-b056092ef984</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>02e3af21-84a2-4bcc-b169-731b03d5da9f</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewAndCLose.rxrec">
+      <id>60776ef8-4b68-438e-95e9-d9b4ec786e7d</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>124b484e-5f52-4f51-be2f-8e81cfcc1e80</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewRecord.rxrec">
+      <id>0fa49e3d-7217-40fe-9f0a-12792d15f2bb</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>5195f731-da58-4404-b2d4-93143a656ac4</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\CreateNewSaveClose.rxrec">
+      <id>647e7912-56c8-4abf-b900-321a23c71636</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>fdcdbcdc-b0d0-4c2c-b976-2ee241f9018f</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\DeselectFewAndAddFewNewFields.rxrec">
+      <id>5a7392d7-d896-4799-9fb0-2a6bc309f4fe</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>1f5253c4-1623-45ec-95df-9ef2f4817796</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\EditForm.rxrec">
+      <id>6e00a833-0492-485e-b98e-89517ecd96f9</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>cf397534-b059-4c2a-bdca-d9072a29c7c1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\EditFormWithoutEdit.rxrec">
+      <id>3c50ddbe-eab9-4bbc-b498-8d9ad440aa62</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>d2a9f0d9-070c-4b04-8b9e-b5a60d7c88e2</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\EnterEmailInTheRecord.rxrec">
+      <id>340d4dab-d6fb-4c2c-84c7-b866a6f26037</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6540530c-892c-4b2d-95a1-2b4d12cf746e</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchLastEnteredRecordID.rxrec">
+      <id>e1b1ef68-fe8e-4793-9576-c127f184b63d</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6260b7e8-6312-40c2-89fd-11ea0c7277e3</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchLatestRecordIDFromGrid.rxrec">
+      <id>6dde3776-cc91-4861-8a43-541e06c57db7</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>016d62fa-a048-40c0-82b0-b8f9e55e5060</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\FetchTheLatestCreatedIDAndValidate.rxrec">
+      <id>194b1f25-44be-4ed3-a9cc-7100c230bcff</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>573a8527-d1ac-491a-9d65-f1cec520ac08</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillEmailDetails.rxrec">
+      <id>d9d9a2d8-9b78-472c-8e28-75832dab272a</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>d99df474-ab41-4d90-99ab-a72456e8cc11</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillFormDetails.rxrec">
+      <id>dc804eb2-877a-4ca5-b63b-d1d02633af91</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>58fe7fdf-a5f5-4815-a94f-91c3f95d046b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\FillFOrmDetailsWithEdit.rxrec">
+      <id>048fd435-3922-4618-846d-cbc03022b53c</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>daaa2341-a24a-4e72-b621-b0f530c1fcb8</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\GoToAllView.rxrec">
+      <id>ad59ecb8-3480-4912-8021-6cd8e1bd54fc</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>8d3c5a3f-4c64-4e94-8ad7-46c0a5cd5427</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchAndDeleteARecord.rxrec">
+      <id>1c7f5476-285a-4506-944c-79b74cd3f8c2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>69c3af90-d8fa-44c4-b668-4254b3de965e</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchAndViewTheRecord.rxrec">
+      <id>1167c8e1-9816-4878-83ee-676bfdacb855</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>72435066-0054-4deb-a579-61eac9647c09</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchApp.rxrec">
+      <id>fd481738-52b8-4356-a87e-1e2c79532796</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>502fa218-f3ab-43d9-8b0a-28ff51bdc1c5</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchEmailAndValidate.rxrec">
+      <id>be516271-2184-4908-a412-d6c5d5ed3076</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ae67fc7f-71fa-4455-9b3f-5c10f24c2a15</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchModule.rxrec">
+      <id>3d3076d4-a9d9-44f8-8cf6-b0d2f0b8ef47</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>b8222867-6661-49ae-a693-ee7feb90ff2f</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchNavigateClonningWizard.rxrec">
+      <id>a33ad29a-84c8-4338-be9b-1e12bcbec6fb</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>4109e7f4-c4de-4e5f-a7ad-579e4ef792be</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchPrintMenu.rxrec">
+      <id>ebbc17ca-6705-4dea-846b-2ad626cdf615</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>c34649cf-c676-44be-aec4-fb313c3147c5</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchPropertyAndValidate.rxrec">
+      <id>7a6b52b5-0300-497c-bf5e-69517e7299d7</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>e5e1980d-0270-40a3-a071-e60045e65199</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchRecycleBinAndVerifyDelete.rxrec">
+      <id>5999e5b9-b9ab-4899-b3be-52f7a414f0a0</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>0208e614-c31c-47ec-89ce-a00600d0b1b9</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\LaunchTheRecordAndCloneIt.rxrec">
+      <id>56a0a35b-c242-4024-b038-eaa860428964</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>2dbb2ab1-331d-41b3-936b-c83836fa62a9</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\NavigateToDataViewer.rxrec">
+      <id>8ebbf602-19cf-413f-8d65-93d8fbbe5ce0</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>a8e256e2-30c0-47b3-9caa-ef6a88c06f88</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenNewFormAndVerifyDateEnteredAsSysDate.rxrec">
+      <id>6448eb0c-ead3-40b3-8297-c975edb92d78</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>1298c736-d109-4147-b0d2-e7e00700ff95</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenRecordAndDelete.rxrec">
+      <id>42fa1079-fdf2-4d79-a33f-e70f1f71da11</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>363341a5-c6c1-4b02-ab37-2df4aca209ef</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\OpenRecordToEdit.rxrec">
+      <id>e3011fc9-cff0-412b-bef1-ff0b12b87696</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>0a80fa9d-3444-4e02-8825-2f6e62895ff8</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\PopulateDataInNewRecord.rxrec">
+      <id>1dd5876f-8205-48ed-8305-1fa48595b9f4</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>2b409018-96dc-4543-b229-e807b177987d</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\PopulateNewRecordSaveAndClose.rxrec">
+      <id>0347387a-55b3-453a-ab5c-0a1fddfdca53</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>fdb70ca9-d6e9-43a3-9579-87a4fdbc8173</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\RemoveFilters.rxrec">
+      <id>e87043b7-531c-46e2-a2b6-3aa61ac6c335</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>521e5495-1038-46bf-bfcd-3affe992b866</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\RestoreDeletedRecord.rxrec">
+      <id>7dc3e38f-60f0-4862-a3cf-ae7a90ed0f5c</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>83269119-90b3-49ee-a780-fad78bf9e962</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SelectModuleAndViewFormCancel.rxrec">
+      <id>69819407-1844-4b41-92a9-b22356bd6fe1</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>b9083d06-0c20-4586-ac99-855804b7e8b1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SelectModuleAndViewFormClose.rxrec">
+      <id>ea847d48-25fe-49d4-af40-90b505fef754</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>e2cfd098-9aea-44d4-a2a0-00e7a474e0c7</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SendEmailAndValidate.rxrec">
+      <id>310330a0-8d39-40ab-b31b-85f994bc043b</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>7f13d78f-8175-4ee5-af58-058f7438f2c4</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerSequenceNumNRecID.rxrec">
+      <id>fbac8e5d-cb16-46d5-ad31-23fffffbddf6</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>aaf1949d-03ad-4dc7-9cea-02dd6594db32</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerToDateEnteredView.rxrec">
+      <id>e22d29f5-cf83-47b9-979f-b751c2136726</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>9c66bfdf-dae0-4a06-ac33-3283fafdab64</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerWithLotAndBlock.rxrec">
+      <id>c72b8d70-71a8-48d2-b639-a1c32925fdcf</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ff78f0a1-2cec-4690-94ff-43314b3f66e1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SetDataViewerWithRefNoAndAddress.rxrec">
+      <id>0208d492-6a78-46ee-b01e-73daab5a41d1</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>f081179b-e691-414d-aabe-e1c257566097</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortAscendingOnRecordIDAndCacheIt.rxrec">
+      <id>90b30bf9-7f61-4d60-aaa5-511c931023dc</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>8208e07c-522a-4ce2-b7f5-42408c71c2f0</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByApplicantAddress.rxrec">
+      <id>58b19575-c447-4ede-9322-c6046561a89c</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6b1e45bc-4fdb-4073-8667-4cebcc56398f</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByRecordID.rxrec">
+      <id>c98ab72d-7b18-4629-81ef-81420825c6f8</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>123697e5-4b1a-4b87-a9cc-1bf1b3c9cd94</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortByStatus.rxrec">
+      <id>ce55647d-b5d9-42f6-ade9-4fcbb7ea21f5</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>9a523cb5-a8b8-4480-83ab-b253d0e20b6d</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\SortDataViewer.rxrec">
+      <id>035b9eaf-a1d3-4c8f-9fd4-170c3cf416a5</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>2df3a740-69cf-4d9e-8b23-d26c103314be</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateAddedFields.rxrec">
+      <id>9fb627b4-398c-49cb-a264-e142082b8d29</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>09d4a469-1b35-44ed-b243-4513bac4c7da</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateDeletedRecordRefNum.rxrec">
+      <id>31b2d431-cefc-4abe-94bd-d76a489154f0</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>7e463756-f8cf-429c-bc7a-90e7b57b55c7</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateInputFieldsAreEmpty.rxrec">
+      <id>09712f98-c610-4217-a050-727275cc53de</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>f1411060-3b09-4f50-82da-9cbf0fd38645</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateNewSetOfFields.rxrec">
+      <id>315fbc57-69e7-4568-a6f0-101802bc4e60</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>060dff89-10c0-4f7e-8b16-9ddb6e7d0b93</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateRemovedFilters.rxrec">
+      <id>f061c0b2-61a1-45cd-b44e-53c1025486da</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>b3fe178c-c762-44f0-9a75-8a45cd2580de</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateRestoredRecord.rxrec">
+      <id>07edb106-da07-414e-861a-c337da74fd02</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>96ad80e4-6f30-4e8f-9387-360df00004e8</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidateTheDisplayOfRenewalLetter.rxrec">
+      <id>3e7f305a-00f6-409c-9ff8-4e5a322fa3fe</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>37220bf7-09d9-4967-a3e9-238fcddf7240</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ValidationsOnRefNumAndAddress.rxrec">
+      <id>80f683fa-6da8-47fd-8be2-6507d8df202c</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>2e908fe8-4424-4e4e-9081-20913fcf0653</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyApplicationDateMatchesSysDateTime.rxrec">
+      <id>eefedacb-eaf4-4fc0-876b-7910d4f6dbbf</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>65d13282-4559-4844-bbc0-1b92e5c8d8e6</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyEditedOnMatchesTheSysDate.rxrec">
+      <id>7ffea0a8-18f9-4de6-a619-d7a7ba1a5b8f</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>cf0c08d3-340a-4b02-b026-5aefed102624</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyLogDetails.rxrec">
+      <id>26ad6373-6ab1-44c9-bea1-65b0564cc836</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>26a7f9ae-bfef-4a33-852f-52a55bd0ac86</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyLogRecordMatches.rxrec">
+      <id>d3973b5d-75dc-4ca5-9d0e-177ece122c2d</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>581a544b-82a0-433d-9980-440afe64e69e</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifyRecordHistory.rxrec">
+      <id>7524a58c-2146-41a8-994a-5d8eff9e8db3</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>27d537e6-b23c-437c-aa99-1969bbe4e2db</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerifySaveNew.rxrec">
+      <id>8017ae82-65ea-45f7-829b-32ee35950515</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>8f173784-28f0-402c-82e1-106f8e9045c0</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\VerrifyLogDetailsUpdated.rxrec">
+      <id>552d4139-5403-4f27-aba7-09fcbb1c42b5</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>89020329-5bea-438c-a725-51834cbf0b61</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ViewForm.rxrec">
+      <id>b098d3c4-a476-4005-ab16-bb1cf48656b2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>828763ba-c82e-496c-8178-b10e2005cd29</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\DataViewer\ViewNewlyCreatedRecord.rxrec">
+      <id>73301afb-6159-4461-971d-2cb57ea1c682</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>b89bb120-5b72-4d92-af56-6b63a6369aff</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\AddTileOperation.rxrec">
+      <id>7524ea5f-81fa-4559-9d7f-fa7a32684cdd</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>8262c856-0b32-488b-bb1d-85376897008b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelInDeleteTileFunctionality.rxrec">
+      <id>b99546b6-50a9-4657-9f73-8b92f4a274af</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ca84cb28-c395-4835-b680-144339bc2fd7</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelInShareTile.rxrec">
+      <id>29089a97-aa16-473a-8a61-491bc6f073e6</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ac2e2787-e1d0-4697-85cc-6c7397cf0554</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CancelViewOperation.rxrec">
+      <id>d62f0b6c-6a25-45b7-b9f7-691dc15d486e</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>1e0fdd9a-2ffd-4206-8889-778e7b559d05</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseApplication.rxrec">
+      <id>2fcdc366-822e-4a6f-b0be-9f489dc491bb</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>269a7bf8-e6a2-43ff-843b-5d700fc146f1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseEnlargedRecentRecords.rxrec">
+      <id>78ecab67-bb55-48c9-9dd7-bd973268be06</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>bd7fe9b5-9a8b-4fad-b859-b9bf9ad86da2</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CloseTileFunctionality.rxrec">
+      <id>e8cd7934-c227-49cf-93ee-f684577f63b2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>14e34b03-8b89-4eb0-84db-bfc56b28c9c3</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFifthView.rxrec">
+      <id>744b860d-bafe-4267-89f5-3baafebe2141</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>221c14cc-4424-493e-aa7a-14f09eb6a641</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFirstView.rxrec">
+      <id>60b81be8-07b8-4f62-a83f-9408311d6280</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>64dd81a2-72af-4dba-98a9-81b45335f086</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateFourthView.rxrec">
+      <id>811e1271-c2ae-4774-8202-6265b456d2fb</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>2897c4a5-537a-49cc-87de-9af167abd623</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateSecondView.rxrec">
+      <id>6f700dac-ecde-4161-b7aa-e294d51b7f76</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>9bf55535-394a-420e-a0ae-1897d1c99ad8</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateThirdview.rxrec">
+      <id>14f1fc04-7052-4dc6-882c-0e60a0d4b0c6</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>5f75ab40-29c2-4cce-8c2e-5e9f014f586b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewFour.rxrec">
+      <id>f74a65e5-c89b-4268-9fbb-795fecf93a95</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>bf4dcac8-b147-4bd9-9d5a-d1669140470b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewOne.rxrec">
+      <id>8b905e01-7738-4bf4-862c-2a0d8c7386c1</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ece778c7-9f76-43e0-8738-e8366e3b437a</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewThree.rxrec">
+      <id>12957412-7df0-4ba2-ac9d-b0729d6b533f</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>4404ef5d-94b0-4052-83d9-4ca6a98b5007</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\CreateViewTwo.rxrec">
+      <id>f2a47a17-107f-4ba6-9274-34c97eed6339</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>02598f6c-7761-483f-a878-9a88cd8ac435</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteCreatedViews.rxrec">
+      <id>87d4f434-b934-4239-95b9-dca703b155e7</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>49db29a8-1544-4292-af64-be0a1bad3022</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteExistingTiles.rxrec">
+      <id>62de1024-ced8-4f63-bde9-bf0b136bef89</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>74479fe3-97db-4a7d-9338-1aff8315eec7</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteSharedTile.rxrec">
+      <id>957e56cf-b700-4c8f-a484-cbe5e4a3aca2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6261e5d4-ad79-4b2a-a6ec-0a6d1de4d305</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeleteTileFunctionality.rxrec">
+      <id>520f8164-903b-4fcc-af90-477485f9dfb2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>4f15378e-b4c2-448d-8096-0b5f75b9dda2</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\DeletionOfExistingTiles.rxrec">
+      <id>a0770edc-cbea-4ecc-bb63-7b39c7ba411b</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>6d5bd1ce-b8fb-4e57-ae6d-ad83e959025c</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\EnlargedRecentRecords_Close.rxrec">
+      <id>f411eec1-6e8a-4785-9f58-6a54f77fbec0</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>374fd18b-d716-4d06-8f68-bd86d8f5ae1a</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\EnlargedRecentRecords_Minimize.rxrec">
+      <id>b6c3b5eb-b282-4122-ab74-32d7e4fb065c</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>9f9fe3db-2a96-4953-9ef4-870fbb9faa12</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\HideTileFunctionality.rxrec">
+      <id>4eeabdb2-91a4-4db8-824b-798f44ce6b03</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>f2b64b1d-7fa7-42bb-bf33-36bae294826b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\LaunchApplication.rxrec">
+      <id>9337af97-2cb4-475f-8721-ea863af1e185</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>9ebcb765-00e9-4207-bfe1-a78384595d81</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\LoginToVerifyShareTile.rxrec">
+      <id>ac26d1ad-cea9-4b60-813c-fcc687e2c8f6</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>85c6741b-dccb-44f2-910c-733258f09e9b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\MinimizeEnlargedRecentRecords.rxrec">
+      <id>e9626eb4-737f-431a-803e-833755fb400b</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>47ca4b5c-fdeb-49de-8f32-06e6cf39be5b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\RecentRecordsEnlargedView.rxrec">
+      <id>0dcda78c-73e2-4637-8b69-ae4c0b565970</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>861f4b92-4b71-4bfe-9c20-c97faf131531</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\RecentRecordsTable.rxrec">
+      <id>4d833dda-6876-46c5-aaf9-8f56b2da909e</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>70c564d8-8768-4c7a-b856-e78bc6b0645b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\ResolutionBack.rxrec">
+      <id>a927d74e-581d-4125-9c55-80afba7ad802</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>d9d6a772-eb33-4e15-b642-b1ef1c27e493</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\ResolutionCheck.rxrec">
+      <id>e8a82f9e-3599-412e-9274-1cd285db1594</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>8b741624-209f-4997-93e9-272007090193</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\SelectModule.rxrec">
+      <id>0bb4da69-c719-4065-9a5c-d6c367a8dae9</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>24e6a82d-2c08-4c59-b8cd-af7a9871098f</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\ShareTileOperation.rxrec">
+      <id>aecb97fc-88b5-4b0e-a8c2-e42f4172c397</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>4b180bfc-8f39-4efa-9789-2c68f99d911b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerificationChecks.rxrec">
+      <id>71562a5e-7859-415a-ab1b-95b9f6ef8440</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>64a883b8-c9ab-4776-9e6f-6c95b2768ba2</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyCancelInShareTile.rxrec">
+      <id>c8a9973d-1e31-4035-8ef6-eb4ef1b9528b</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>10eea7c4-3f26-4215-82d8-05277fbeba31</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyShareTileFunctionality.rxrec">
+      <id>3641174f-e897-45e3-af5c-3a2a0dfb3748</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>e95a7bce-b06f-4cf2-abaf-da565a6d8dca</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForFirstView.rxrec">
+      <id>779415c8-8fab-4032-8e65-4160d58d1446</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>17835319-58f3-4226-ac38-0de9f8d05525</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForFourthView.rxrec">
+      <id>d4a25d1e-4a7f-4fd0-8ee5-ceb71c53fe7e</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>e2f954a0-8e8c-4003-847a-6cbd8df2fcd8</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForSecondView.rxrec">
+      <id>eab732d0-fb4f-47c8-bf02-b6a99c9baae7</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>58c50977-1fae-4195-ab01-ed788e34b67e</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Homescreen\VerifyViewCountForThirdView.rxrec">
+      <id>707552bc-82b0-49b3-9ef6-5a6c4f82946f</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>af657045-0226-4c0f-82d3-4fd192dcea57</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\ApplicantAddressFilter.rxrec">
+      <id>6c819bf4-21da-47a2-9ee7-5b603a99ab5c</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>4f6f888e-7578-44ff-9ba3-8b0291400faf</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\CloseApplicantAddressFilter.rxrec">
+      <id>66d4b9d4-156e-44f6-aa3c-1acca354e455</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>f44df1ba-b893-48b7-b49b-3411cc007ae8</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\CloseRecordIDFilter.rxrec">
+      <id>b421febd-4d8e-4e33-a92d-bb65b021c4c3</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>a346189f-fa47-43b0-a629-0782652dd1e3</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\CloseRefNoFilter.rxrec">
+      <id>e1583776-0a56-4b98-8e68-cdf55b83f794</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>e14ed51d-15de-4850-9d4d-6b2463b867a8</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\EnterAssertNameAddress.rxrec">
+      <id>dc4563ff-6876-4405-b463-256351b8b840</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ddc501e9-9be3-4a5d-8496-928ff297a7f1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\EnterBlockLotAddress.rxrec">
+      <id>d50b7436-2272-4427-8ebd-cdc243aced5e</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>27d3168b-c69c-4381-8720-a09ce9ceb62a</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\ModuleApplicantAddressSelect.rxrec">
+      <id>d9e770f9-caa3-4df2-820f-39486d81004b</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>3a46e831-31cb-47d0-b4c9-1cc7dc930962</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\ModuleRecordIDSelect.rxrec">
+      <id>52d43b3b-7374-4ce7-a1a5-4e180de9959a</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>94b5cf13-90b9-4624-9e9a-c2d75087f848</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\ModuleRefNoSelect.rxrec">
+      <id>59d13d30-9bf4-4094-8ab2-ca4fb5841c97</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>20933b10-877f-4f42-8d3c-66c2e93f9ade</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\RecordIdFilter.rxrec">
+      <id>491f616b-c988-4a67-998f-e5eeface92fb</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>734db6bf-358b-4dae-a050-ad100321cfaa</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\RefNoFilter.rxrec">
+      <id>4f8303b2-876e-4250-a04f-c9a572df587f</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>f465e569-d63c-441f-85b9-5535b32889c1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\SearchPropertyAddress.rxrec">
+      <id>bb636466-a945-4e28-85b5-a713f319d824</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>5d9128b8-8829-44b7-a942-918d358483b1</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\SelectDogLicense.rxrec">
+      <id>79bb5a02-a1c9-4d2a-bad9-e596aa72bbf2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ca16815b-18ec-461f-bc55-b30ec480bd84</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\Property\ValidationBlockLotCity.rxrec">
+      <id>2cee2d9e-cc35-408e-9e68-6b253b5d1e63</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>c60a459e-b56a-4250-bac6-7515024e54ed</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\LaunchBrowser.rxrec">
+      <id>ad9cdfb8-1741-4c25-b764-b9f1bd5fd8a7</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>c26422fb-f638-4388-92da-508166a807f9</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\LaunchingPublicFormURL.rxrec">
+      <id>996b4b98-cec0-48d0-a6a0-cd0dd41481b4</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>48125876-a0d6-4eb0-bae2-eb1aeeb1c70b</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormSubmitInValidForm.rxrec">
+      <id>87912d7e-2940-412b-9b7d-2aafde75d702</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>d3a85d5a-31a9-494d-afe5-133316de5aed</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormSuspendedAccount.rxrec">
+      <id>ceba2b81-cf43-44e1-a3d0-f2972f2ff14b</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>599e0510-ba42-47e3-8686-693794a61ceb</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormsWithParcelidenti.rxrec">
+      <id>22035f80-dfc1-450b-b822-f719f6fba9ca</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>ff48552e-ccf3-4f92-ab9b-54b8806ba6fd</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithLocation.rxrec">
+      <id>96107e1d-e161-4d90-9bed-dd5740b35665</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>5f9f5aff-7b99-42e5-88db-530bf571f14c</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithNonResidentNoAddress.rxrec">
+      <id>40424dcf-5ea1-4b5f-95d2-13985fab48ca</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>53a5bce6-94d8-4f01-b3b6-916723c17518</recordtableid>
+    </None>
+    <None Include="GovPilotRecordings\SmokeRecordings\PublicForms\VerifyDogLicenseOnAdminApplication.rxrec">
+      <id>2aa0f6a9-27c7-4c1d-a8df-d495c786e3f2</id>
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <recordtableid>559c8731-40ea-4b87-af94-8427ffcad4b0</recordtableid>
+    </None>
+    <None Include="GovPilotRepository.rximg">
+      <BoundTo>3cb08cea-c66f-40ad-bef8-67dedaf71117</BoundTo>
+      <DependentUpon>GovPilotRepository.rxrep</DependentUpon>
+      <imageblob>true</imageblob>
+      <id>e313b14d-d4e5-4e91-ae8c-8d2d81bc547d</id>
+    </None>
+    <None Include="GovPilotRepository.rxrep">
+      <id>3cb08cea-c66f-40ad-bef8-67dedaf71117</id>
+      <repoid>5d76f0a4-b86a-4c37-add8-b73db33693eb</repoid>
+      <reporootid>da73d23f-93bd-4a6d-9783-c46ff2e89484</reporootid>
+    </None>
+    <None Include="packages.config">
+      <id>a3e02cad-230e-40aa-b8a9-7f57e5c2c0fb</id>
+    </None>
+    <None Include="TestData\TestDocument.txt">
+      <id>8a2a1319-9481-4a34-b2cf-e69226857f77</id>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GovPilot.rxtmg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <id>222f6bb3-4faa-4dd8-8324-0a48ab8fff9b</id>
+    </Content>
+    <Content Include="GovPilot.rxtst">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <id>e7226da1-adf5-4b7d-beb0-25d904b1675d</id>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(RanorexTargetsPath)" Condition="Exists('$(RanorexTargetsPath)')" />
+</Project>

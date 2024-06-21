@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<recordtable
+embeddedrepository="False"
+id="6b1e45bc-4fdb-4073-8667-4cebcc56398f"
+mode="Global">
+	<repeatcount>
+		1
+	</repeatcount>
+	<turbomode>
+		False
+	</turbomode>
+	<genreport>
+		True
+	</genreport>
+	<speedfactor>
+		1
+	</speedfactor>
+	<useDefaultItemLogging>
+		True
+	</useDefaultItemLogging>
+	<codegen
+	classname="SortByApplicantAddress"
+	namespace="GovPilot.GovPilotRecordings.SmokeRecordings.DataViewer">
+	</codegen>
+	<variables>
+	</variables>
+	<recorditems>
+		<invokeactionrecorditem
+		action="Focus"
+		enabled="True"
+		optional="False"
+		searchpropertyid="f2d3b01d-9ff7-42c9-a946-82ef5d8f9eb2">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="c25cbb60-7ada-4021-b97b-f2faa170e632"
+			sourcename="RepositoryEditor">
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div/div/div/div[2]/div[2]/div[1]/div/table/thead//span/?/?/span[@innertext='Applicant Address']
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+			<arguments
+			id="9d746dd1-30b8-4cc2-aff2-8162a3018c69">
+			</arguments>
+		</invokeactionrecorditem>
+		<invokeactionrecorditem
+		action="EnsureVisible"
+		enabled="True"
+		optional="False"
+		searchpropertyid="7a830568-886d-49d2-832c-a0c30e3ac861">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="c25cbb60-7ada-4021-b97b-f2faa170e632"
+			sourcename="RepositoryEditor">
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div/div/div/div[2]/div[2]/div[1]/div/table/thead//span/?/?/span[@innertext='Applicant Address']
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+			<arguments
+			id="ffdba17d-b1bc-49b8-9ffc-73d4cb0edda4">
+			</arguments>
+		</invokeactionrecorditem>
+		<mouseitem
+		action="Click"
+		button="Left"
+		duration="100ms"
+		enabled="True"
+		loc="Center"
+		movetime="300ms"
+		optional="False"
+		searchpropertyid="407559f1-5373-4959-8fb9-5157b54375fd"
+		sx="0"
+		sy="0"
+		warnoutofbounds="False">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="c25cbb60-7ada-4021-b97b-f2faa170e632"
+			sourcename="RepositoryEditor">
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div/div/div/div[2]/div[2]/div[1]/div/table/thead//span/?/?/span[@innertext='Applicant Address']
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+		</mouseitem>
+		<explicitdelayitem
+		duration="2000ms"
+		enabled="True"
+		optional="False">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+		</explicitdelayitem>
+		<validationitem
+		action="ContainsImage"
+		codegenpropertyname="SortingArrowAcendApplicantAddress_Screenshot1"
+		duration="100ms"
+		enabled="True"
+		imagerect="0,0,20,20"
+		optional="False"
+		screenshotguid="5c5fc316-5ee3-4bb7-aefa-c173e8fa3043"
+		screenshotname="Screenshot1"
+		searchpropertyid="35a96f33-8b23-40e0-ae6d-c1b77c09f5d2"
+		similarity="1">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="6aa9fa59-cf8b-4c4b-9e4f-b81098857e06"
+			sourcename="ElementTree">
+				<element
+				capabilities="webelement, spantag"
+				dontcache="True"
+				enabled="True"
+				flavor="chromeweb"
+				hasfocus="False"
+				index="1"
+				prefcap="spantag"
+				rect="1507,427,20,20"
+				role="unknown"
+				snapElem=""
+				valid="True"
+				visible="True">
+					<attribute
+					name="class"
+					type="System.String">
+						k-icon k-i-sort-asc-sm
+					</attribute>
+					<attribute
+					name="draggable"
+					type="System.String">
+						False
+					</attribute>
+					<attribute
+					name="hidden"
+					type="System.String">
+						False
+					</attribute>
+					<attribute
+					name="innertext"
+					type="System.String">
+					</attribute>
+					<attribute
+					name="safeclass"
+					type="System.String">
+						k-icon k-i-sort-asc-sm
+					</attribute>
+					<attribute
+					name="tagname"
+					type="System.String">
+						span
+					</attribute>
+				</element>
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div/div/div/div[2]/div[2]/div[1]/div/table/thead/tr[1]/th[10]/span/span/span[2]
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+			<helperscreenshot
+			guid="be43468c-ce33-4582-97e2-8f72d2479304">
+				/9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDABwTFRgVERwYFhgfHRwhKUUtKSYmKVQ8QDJFZFhpZ2JY
+YF9ufJ6GbnWWd19giruLlqOpsbOxa4TC0MGszp6usar/2wBDAR0fHykkKVEtLVGqcmByqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr/wAARCAA5AHgDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDovxNH
+4miigA/E0fiaKKAD8TR+JopGIVSzEAAZJPagQv4mj8TUP2u2/wCfiH/vsUfa7b/n4h/77FF0F0Tf
+iaPxNQ/a7b/n4h/77FSI6yKGRgynoQcijQLjvxNH4miigYfiaPxNFFAB+JooooAKZFKkylozkAkd
+O4rPnnWa6QPdtbwmMOhVgu4n3P8AKq8ch+ywobhoopJZN0qnB68c9s0AbCSo8jorZZMBhjpmn1ih
+ysN80M7PhowJAeT07in6i81u0UAllKMCxfzVjJOf7xGPwoA16hvf+PKf/rm38qzGmnawi3zhPnIy
+J1DOB0+bpmm3U7SWEe24YLhgweQKz49xww/nQ9hPYl07T7Wexjkli3O2cncR3PvU50/ThKIjGN5G
+QN7f40/SP+QZF+P8zUb2SNfqTJJuKl92ecgilCMWtTKy5U0hLnTbOO1ldYcMqEg7j1x9al0j/kGQ
+/j/M1Nef8eM//XNv5VDpH/IMh/H+ZpWSloUklLQuUUUVZYUUUUAFFFFAEZghKqpiQqn3RtGB9KUw
+xGMoY0KE5K7Rg/hT6KAGeTFgjykw2MjaOcdKWSNJV2yIrr6MMinUUAMaKN4/LaNGT+6RkflUN7FH
+9glXYuFjYqMdOO1Waa6LIjIwyrDBHtSYPYoaXcwR6fErzRqwzkFgD1NWDPamcS/aYshSuN4/z2pn
+9lWX/PH/AMfb/Gj+yrL/AJ4/+Pt/jUrmSISklYLu6t2s5lWeIkxsAA454o0j/kGQ/j/M0f2VZf8A
+PH/x9v8AGrMMSQRCOJdqL0Gc0JO92NJ3ux9FFFWUFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
+ABRRRQAUUUUAFFFFAH//2Q==
+			</helperscreenshot>
+			<matchname>
+			</matchname>
+			<matchvalue>
+			</matchvalue>
+		</validationitem>
+		<explicitdelayitem
+		duration="1000ms"
+		enabled="True"
+		optional="False">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+		</explicitdelayitem>
+		<mouseitem
+		action="Click"
+		button="Left"
+		duration="300ms"
+		enabled="True"
+		loc="Center"
+		movetime="300ms"
+		optional="False"
+		searchpropertyid="a3fca5d1-2699-4d74-8615-0ba4e93d90cb"
+		sx="0"
+		sy="0"
+		warnoutofbounds="False">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="1b1ff8e7-2f8c-4b6f-b35d-503c6f6e9c84"
+			sourcename="RepositoryEditor">
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div//ul/li/a[@innertext~$DateEnteredView]
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+		</mouseitem>
+		<explicitdelayitem
+		duration="2000ms"
+		enabled="True"
+		optional="False">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+		</explicitdelayitem>
+		<invokeactionrecorditem
+		action="Focus"
+		enabled="True"
+		optional="False"
+		searchpropertyid="f2d3b01d-9ff7-42c9-a946-82ef5d8f9eb2">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="c25cbb60-7ada-4021-b97b-f2faa170e632"
+			sourcename="RepositoryEditor">
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div/div/div/div[2]/div[2]/div[1]/div/table/thead//span/?/?/span[@innertext='Applicant Address']
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+			<arguments
+			id="9d746dd1-30b8-4cc2-aff2-8162a3018c69">
+			</arguments>
+		</invokeactionrecorditem>
+		<invokeactionrecorditem
+		action="EnsureVisible"
+		enabled="True"
+		optional="False"
+		searchpropertyid="7a830568-886d-49d2-832c-a0c30e3ac861">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="c25cbb60-7ada-4021-b97b-f2faa170e632"
+			sourcename="RepositoryEditor">
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div/div/div/div[2]/div[2]/div[1]/div/table/thead//span/?/?/span[@innertext='Applicant Address']
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+			<arguments
+			id="ffdba17d-b1bc-49b8-9ffc-73d4cb0edda4">
+			</arguments>
+		</invokeactionrecorditem>
+		<validationitem
+		action="ContainsImage"
+		codegenpropertyname="SortingArrowAcendApplicantAddress_Screenshot1_2"
+		duration="100ms"
+		enabled="True"
+		imagerect="0,0,20,20"
+		optional="False"
+		screenshotguid="5c5fc316-5ee3-4bb7-aefa-c173e8fa3043"
+		screenshotname="Screenshot1"
+		searchpropertyid="35a96f33-8b23-40e0-ae6d-c1b77c09f5d2"
+		similarity="1">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="6aa9fa59-cf8b-4c4b-9e4f-b81098857e06"
+			sourcename="ElementTree">
+				<element
+				capabilities="webelement, spantag"
+				dontcache="True"
+				enabled="True"
+				flavor="chromeweb"
+				hasfocus="False"
+				index="1"
+				prefcap="spantag"
+				rect="1507,427,20,20"
+				role="unknown"
+				snapElem=""
+				valid="True"
+				visible="True">
+					<attribute
+					name="class"
+					type="System.String">
+						k-icon k-i-sort-asc-sm
+					</attribute>
+					<attribute
+					name="draggable"
+					type="System.String">
+						False
+					</attribute>
+					<attribute
+					name="hidden"
+					type="System.String">
+						False
+					</attribute>
+					<attribute
+					name="innertext"
+					type="System.String">
+					</attribute>
+					<attribute
+					name="safeclass"
+					type="System.String">
+						k-icon k-i-sort-asc-sm
+					</attribute>
+					<attribute
+					name="tagname"
+					type="System.String">
+						span
+					</attribute>
+				</element>
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/div/div/div/div/div[2]/div[2]/div[1]/div/table/thead/tr[1]/th[10]/span/span/span[2]
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+			<helperscreenshot
+			guid="be43468c-ce33-4582-97e2-8f72d2479304">
+				/9j/4AAQSkZJRgABAQEAeAB4AAD/2wBDABwTFRgVERwYFhgfHRwhKUUtKSYmKVQ8QDJFZFhpZ2JY
+YF9ufJ6GbnWWd19giruLlqOpsbOxa4TC0MGszp6usar/2wBDAR0fHykkKVEtLVGqcmByqqqqqqqq
+qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr/wAARCAA5AHgDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDovxNH
+4miigA/E0fiaKKAD8TR+JopGIVSzEAAZJPagQv4mj8TUP2u2/wCfiH/vsUfa7b/n4h/77FF0F0Tf
+iaPxNQ/a7b/n4h/77FSI6yKGRgynoQcijQLjvxNH4miigYfiaPxNFFAB+JooooAKZFKkylozkAkd
+O4rPnnWa6QPdtbwmMOhVgu4n3P8AKq8ch+ywobhoopJZN0qnB68c9s0AbCSo8jorZZMBhjpmn1ih
+ysN80M7PhowJAeT07in6i81u0UAllKMCxfzVjJOf7xGPwoA16hvf+PKf/rm38qzGmnawi3zhPnIy
+J1DOB0+bpmm3U7SWEe24YLhgweQKz49xww/nQ9hPYl07T7Wexjkli3O2cncR3PvU50/ThKIjGN5G
+QN7f40/SP+QZF+P8zUb2SNfqTJJuKl92ecgilCMWtTKy5U0hLnTbOO1ldYcMqEg7j1x9al0j/kGQ
+/j/M1Nef8eM//XNv5VDpH/IMh/H+ZpWSloUklLQuUUUVZYUUUUAFFFFAEZghKqpiQqn3RtGB9KUw
+xGMoY0KE5K7Rg/hT6KAGeTFgjykw2MjaOcdKWSNJV2yIrr6MMinUUAMaKN4/LaNGT+6RkflUN7FH
+9glXYuFjYqMdOO1Waa6LIjIwyrDBHtSYPYoaXcwR6fErzRqwzkFgD1NWDPamcS/aYshSuN4/z2pn
+9lWX/PH/AMfb/Gj+yrL/AJ4/+Pt/jUrmSISklYLu6t2s5lWeIkxsAA454o0j/kGQ/j/M0f2VZf8A
+PH/x9v8AGrMMSQRCOJdqL0Gc0JO92NJ3ux9FFFWUFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFF
+ABRRRQAUUUUAFFFFAH//2Q==
+			</helperscreenshot>
+			<matchname>
+			</matchname>
+			<matchvalue>
+			</matchvalue>
+		</validationitem>
+	</recorditems>
+	<repository
+	id="5d76f0a4-b86a-4c37-add8-b73db33693eb"
+	name="GovPilotRepository"
+	relativepath="..\..\..\GovPilotRepository.rxrep">
+		<codegen
+		classname="GovPilotRepository"
+		namespace="GovPilot">
+		</codegen>
+		<rootfolder
+		id="da73d23f-93bd-4a6d-9783-c46ff2e89484"
+		name="_rootdummy_">
+		</rootfolder>
+	</repository>
+	<usercodefile
+	lang="CSharp">
+		SortByApplicantAddress.UserCode.cs
+	</usercodefile>
+	<references>
+	</references>
+</recordtable>

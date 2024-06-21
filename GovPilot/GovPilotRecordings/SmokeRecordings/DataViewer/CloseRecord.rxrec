@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<recordtable
+embeddedrepository="False"
+id="f278ab02-059d-418d-b4c2-aa8b0b936d4d"
+mode="Global">
+	<repeatcount>
+		1
+	</repeatcount>
+	<turbomode>
+		False
+	</turbomode>
+	<genreport>
+		True
+	</genreport>
+	<speedfactor>
+		1
+	</speedfactor>
+	<useDefaultItemLogging>
+		True
+	</useDefaultItemLogging>
+	<codegen
+	classname="CloseRecord"
+	namespace="GovPilot.GovPilotRecordings.SmokeRecordings.DataViewer">
+	</codegen>
+	<variables>
+	</variables>
+	<recorditems>
+		<mouseitem
+		action="Click"
+		button="Left"
+		duration="300ms"
+		enabled="True"
+		loc="Center"
+		movetime="300ms"
+		optional="False"
+		searchpropertyid="fb2d3890-a488-40b4-9c37-03f3b88bab1b"
+		sx="0"
+		sy="0"
+		warnoutofbounds="False">
+			<comment>
+			</comment>
+			<bindings>
+			</bindings>
+			<info
+			id="9e0115b1-07db-4c45-95f2-8b0b4dc4ab2f"
+			sourcename="RepositoryEditor">
+				<path>
+					/dom[@domain='platformqa.govpilot.com']//div[#'dv-content']/?/?/ul//span
+				</path>
+				<robustPath>
+				</robustPath>
+			</info>
+		</mouseitem>
+	</recorditems>
+	<repository
+	id="5d76f0a4-b86a-4c37-add8-b73db33693eb"
+	name="GovPilotRepository"
+	relativepath="..\..\..\GovPilotRepository.rxrep">
+		<codegen
+		classname="GovPilotRepository"
+		namespace="GovPilot">
+		</codegen>
+		<rootfolder
+		id="da73d23f-93bd-4a6d-9783-c46ff2e89484"
+		name="_rootdummy_">
+		</rootfolder>
+	</repository>
+	<usercodefile
+	lang="CSharp">
+		CloseRecord.UserCode.cs
+	</usercodefile>
+	<references>
+	</references>
+</recordtable>

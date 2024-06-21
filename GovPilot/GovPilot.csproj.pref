@@ -1,0 +1,26 @@
+﻿<Properties>
+  <Array name="active">
+    <Element value="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithLocation.rxrec" />
+  </Array>
+  <Array name="bookmarks" />
+  <Array name="files">
+    <Element value="GovPilot.rxtst" />
+    <Element value="Modules\EmailModule.cs" />
+    <Element value="Modules\ReportToPDFModule.cs" />
+    <Element value="UserCodeCollections\EmailLibrary.cs" />
+    <Element value="GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithLocation.rxrec" />
+  </Array>
+  <Properties name="projectSavedData">
+    <Properties name="customTool">
+      <runOnBuild value="False" />
+    </Properties>
+    <Array name="recentusercodeselections">
+      <Element value="GovPilot.RecordingModules.SmokeRecordings.PublicForms.PublicFormSubmitInValidForm.Mouse_Click_Btn_Submit(RepoItemInfo buttonInfo)" />
+      <Element value="GovPilot.AddSortingToView.Get_value_MultipleRecordIDs(RepoItemInfo tdtagInfo)" />
+      <Element value="GovPilot.FailureHandling.MergedUserCodeMethod(RepoItemInfo buttonInfo, RepoItemInfo atagInfo, RepoItemInfo inputtagInfo, RepoItemInfo inputtagInfo1, RepoItemInfo buttontagInfo)" />
+      <Element value="GovPilot.FillFormDetails.Key_sequence_TxtBreedInput(RepoItemInfo inputtagInfo)" />
+      <Element value="GovPilot.FillFOrmDetailsWithEdit.Key_sequence_TxtBreedInput(RepoItemInfo inputtagInfo)" />
+      <Element value="GovPilot.VerifyRecordHistory.Validate_TDPhoneInLogs(RepoItemInfo tdtagInfo)" />
+    </Array>
+  </Properties>
+</Properties>

@@ -1,0 +1,19 @@
+﻿<Properties>
+  <Array name="active" />
+  <ActiveConfiguration value="Debug" />
+  <ActivePlatform value="x86" />
+  <Array name="bookmarks" />
+  <Array name="files" />
+  <SerializedValue name="ModuleBrowserState">
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <string>{94D2BE9C-BF7A-4196-9A43-26532F6B5F80}</string>
+      <string>60513a05-eab7-41e7-8c10-e51c735edc2e</string>
+      <string>Modules</string>
+      <string>GovPilotRecordings\SmokeRecordings\PublicForms</string>
+      <string>GovPilotRecordings\SmokeRecordings</string>
+      <string>GovPilotRecordings</string>
+    </ArrayOfString>
+  </SerializedValue>
+  <ProjectBrowserState value="[Solution GovPilot[Solution Items[]GovPilot[GovPilotRecordings[SmokeRecordings[PublicForms[]]]TestData[]]]]&#xD;&#xA;Solution GovPilot\GovPilot\GovPilotRecordings\SmokeRecordings\PublicForms\PublicFormWithLocation.rxrec&#xD;&#xA;Solution GovPilot\GovPilot\References" />
+  <StartupProject value="{94D2BE9C-BF7A-4196-9A43-26532F6B5F80}" />
+</Properties>
