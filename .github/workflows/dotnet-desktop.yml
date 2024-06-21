@@ -37,15 +37,14 @@ jobs:
             
     # This step is not required for all solutions 
     # Restore the application to populate the obj folder with RuntimeIdentifiers 
-    - name: Restore the application 
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
-      env: 
-        Configuration: ${{ matrix.configuration }} 
- 
+    - name: set shell
+      shell : cmd
+      run: dotnet restore GovPilot.csproj 
+      
     # Build the solution 
     - name: Build solution 
       run: msbuild GovPilot\GovPilot.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
  
     # Run the solution, replacing RxDemoApp with the name of your solution 
     - name: Run the Test Suite 
-      run: C:/Windows/System32/actions-runner/_work/selenium_maven/selenium_maven/GovPilot/bin/Debug/GovPilot.exe
+      run: GovPilot/bin/Debug/GovPilot.exe
