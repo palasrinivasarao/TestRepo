@@ -37,12 +37,11 @@ jobs:
             
     # This step is not required for all solutions 
     # Restore the application to populate the obj folder with RuntimeIdentifiers 
-    - name: set shell
-      shell : cmd
-      run: dotnet restore GovPilot.csproj 
+    - name: Restore the application 
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
       env: 
         Configuration: ${{ matrix.configuration }} 
-      
+        
     # Build the solution 
     - name: Build solution 
       run: msbuild GovPilot\GovPilot.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
