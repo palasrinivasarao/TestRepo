@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<recordtable
+embeddedrepository="False"
+id="502fa218-f3ab-43d9-8b0a-28ff51bdc1c5"
+mode="Global">
+	<repeatcount>
+		1
+	</repeatcount>
+	<turbomode>
+		False
+	</turbomode>
+	<genreport>
+		True
+	</genreport>
+	<speedfactor>
+		1
+	</speedfactor>
+	<useDefaultItemLogging>
+		True
+	</useDefaultItemLogging>
+	<codegen
+	classname="LaunchApp"
+	namespace="GovPilot.GovPilotRecordings.SmokeRecordings.DataViewer">
+	</codegen>
+	<variables>
+		<var
+		id="4820f0b4-a346-4f4a-998e-e8ffd87550e3"
+		name="TenantUrl">
+		</var>
+	</variables>
+	<recorditems>
+		<openwebsiterecorditem
+		args=""
+		browser="Chrome"
+		clearcache="False"
+		clearcodecache="False"
+		clearcookies="False"
+		clearserviceworker="False"
+		enabled="True"
+		incognito="False"
+		instrument="True"
+		killexisting="False"
+		maximized="True"
+		optional="False">
+			<comment>
+			</comment>
+			<bindings>
+				<binding
+				target="Url"
+				variable="TenantUrl">
+				</binding>
+			</bindings>
+			<url>
+				http://www.ranorex.com
+			</url>
+		</openwebsiterecorditem>
+	</recorditems>
+	<repository
+	id="5d76f0a4-b86a-4c37-add8-b73db33693eb"
+	name="GovPilotRepository"
+	relativepath="..\..\..\GovPilotRepository.rxrep">
+		<codegen
+		classname="GovPilotRepository"
+		namespace="GovPilot">
+		</codegen>
+		<rootfolder
+		id="da73d23f-93bd-4a6d-9783-c46ff2e89484"
+		name="_rootdummy_">
+		</rootfolder>
+	</repository>
+	<usercodefile
+	lang="CSharp">
+		LaunchApp.UserCode.cs
+	</usercodefile>
+	<references>
+	</references>
+</recordtable>

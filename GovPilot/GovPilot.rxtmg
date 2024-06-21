@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modulegroupdoc>
+  <testsuiteentryhierarchy>
+    <flatlistofchildren>
+      <modulegroups
+      name="GovPilot"
+      id="fe198b73-d015-49ea-8013-fe06d2bb1095"/>
+    </flatlistofchildren>
+    <childhierarchy>
+      <modulegroups
+      name="GovPilot"
+      id="fe198b73-d015-49ea-8013-fe06d2bb1095"/>
+    </childhierarchy>
+  </testsuiteentryhierarchy>
+</modulegroupdoc>
