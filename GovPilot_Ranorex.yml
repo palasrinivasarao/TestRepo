@@ -1,0 +1,51 @@
+name: RxDemoAppRegression # Choose a name that makes the most sense to you 
+ 
+on: # This setup will run the workflow on Push and Pull requests to the main code branch 
+  push: 
+    branches: [ "features" ] 
+  pull_request: 
+    branches: [ "features" ] 
+ 
+jobs: 
+ 
+  build: 
+ 
+    strategy: 
+      matrix: 
+        configuration: [Debug] 
+ 
+    runs-on: self-hosted # The Runner must be self-hosted
+     
+    # Configure environment variables 
+    env: 
+      Solution_Name: GovPilot.sln # Replace with your solution name 
+      Test_Project_Path: GovPilot\GovPilot.csproj # Replace with the path to your test project 
+       
+    # Check out code from the repository 
+    steps: 
+    - name: Checkout 
+      uses: actions/checkout@v4 # At the time of writing, v4 is the latest 
+      with: 
+        fetch-depth: 0 
+ 
+    # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild     
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
+      with:
+       msbuild-architecture: x64
+       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
+            
+    # This step is not required for all solutions 
+    # Restore the application to populate the obj folder with RuntimeIdentifiers 
+    - name: Restore the application 
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
+      env: 
+        Configuration: ${{ matrix.configuration }} 
+ 
+    # Build the solution 
+    - name: Build solution 
+      run: msbuild GovPilot\GovPilot.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+ 
+    # Run the solution, replacing RxDemoApp with the name of your solution 
+    - name: Run the Test Suite 
+      run: C:/Windows/System32/actions-runner/_work/selenium_maven/selenium_maven/GovPilot/bin/Debug/GovPilot.exe
