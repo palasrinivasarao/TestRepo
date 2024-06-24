@@ -48,4 +48,4 @@ jobs:
  
     # Run the solution, replacing RxDemoApp with the name of your solution 
     - name: Run the Test Suite 
-      run: GovPilot/bin/Debug/GovPilot.exe
+      run: GovPilot/bin/Release/GovPilot.exe 
