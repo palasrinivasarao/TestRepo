@@ -46,7 +46,6 @@ jobs:
     - name: Build solution 
       run: msbuild GovPilot\GovPilot.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
 
-    # Shell script
     - name: Set shell
     - shell : cmd
       run: dotnet restore GovPilot.csproj
