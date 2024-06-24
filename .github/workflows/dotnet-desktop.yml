@@ -45,7 +45,14 @@ jobs:
     # Build the solution 
     - name: Build solution 
       run: msbuild GovPilot\GovPilot.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+
+    # Shell script
+    - name: Set shell
+    - shell : cmd
+      run: dotnet restore GovPilot.csproj
  
     # Run the solution, replacing RxDemoApp with the name of your solution 
     - name: Run the Test Suite 
-      run: GovPilot/bin/Release/GovPilot.exe 
+      run: GovPilot/bin/Debug/GovPilot.exe 
+
+  
