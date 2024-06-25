@@ -18,7 +18,7 @@ jobs:
      
     # Configure environment variables 
     env: 
-      Solution_Name: GovPilot.sln # Replace with your solution name 
+      Solution_Name: TestRepo\GovPilot.sln # Replace with your solution name 
       Test_Project_Path: GovPilot\GovPilot.csproj # Replace with the path to your test project 
        
     # Check out code from the repository 
