@@ -18,7 +18,7 @@ jobs:
      
     # Configure environment variables 
     env: 
-      Solution_Name: TestRepo\GovPilot.sln # Replace with your solution name 
+      Solution_Name: GovPilot.sln # Replace with your solution name 
       Test_Project_Path: GovPilot\GovPilot.csproj # Replace with the path to your test project 
        
     # Check out code from the repository 
@@ -34,7 +34,7 @@ jobs:
       with:
        msbuild-architecture: x64
        vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
-                 
+            
     # This step is not required for all solutions 
     # Restore the application to populate the obj folder with RuntimeIdentifiers 
     - name: Restore the application 
@@ -44,10 +44,10 @@ jobs:
         
     # Build the solution 
     - name: Build solution 
-      run: msbuild $env:Solution_Name -t:rebuild -verbosity:diag -property:Configuration=Debug
-         
+      run: msbuild GovPilot\GovPilot.csproj -t:rebuild -verbosity:diag -property:Configuration=Debug
+
     # Run the solution, replacing RxDemoApp with the name of your solution 
     - name: Run the Test Suite 
-      run: GovPilot/bin/Debug/GovPilot.exe 
+      run: C:/Windows/System32/actions-runner/_work/TestRepo/TestRepo/GovPilot/bin/Debug/GovPilot.exe 
 
   
