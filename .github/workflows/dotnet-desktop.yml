@@ -31,6 +31,9 @@ jobs:
     # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild     
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
+      with:
+       msbuild-architecture: x86
+       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
                  
     # This step is not required for all solutions 
     # Restore the application to populate the obj folder with RuntimeIdentifiers 
@@ -42,7 +45,7 @@ jobs:
     # Build the solution 
     - name: Build solution 
       run: msbuild $env:Solution_Name -t:rebuild -verbosity:diag -property:Configuration=Debug
-   
+         
     # Run the solution, replacing RxDemoApp with the name of your solution 
     - name: Run the Test Suite 
       run: GovPilot/bin/Debug/GovPilot.exe 
